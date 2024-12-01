@@ -1,0 +1,145 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+nav{
+    padding: 1rem;
+    background-color: rgb(255, 175, 192);
+}
+
+.nav-con{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.logo a{
+    font-size: 2rem;
+    color: aliceblue;
+    text-decoration: none;
+    
+}
+
+.menu {
+ display: flex;
+ list-style: none;
+ align-items: center;
+}
+
+.menu li {
+ margin: 0 1rem ;
+}
+
+.menu li a {
+ color: aliceblue;
+text-decoration: none;
+}
+
+.maincontent-con{
+    display: flex;
+}
+.maincontent-info{
+    width: 100%;
+    padding: 2rem;
+}
+
+.maincontent-img img{
+    width: 100%;
+}
+
+ .maincontent-info h3{
+    font-size: 2rem;
+    color: #ffffff;
+ }
+
+ .maincontent-info p{
+    margin: 1rem 0;
+ }
+
+ .maincontent-info .maincontent-btn{
+    background-color: #ffa43d;
+    color: aliceblue;
+    padding: 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+ }
+
+ .maincontent-img{
+    width: 100%;
+    padding: 2rem;
+ }
+
+ .content-con{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 2rem;
+ }
+
+ .content-title{
+    margin: 2rem 0;
+ }
+ .content-item img{
+    width: 70%;
+    
+ }
+
+ .content-item h4{
+    margin-top: 1rem;
+ }
+ .content-item p{
+    margin: 1rem 0;
+ }
+
+ .content-item a{
+    display: inline-block;
+    color: #ffffff;
+    background-color: #ffa43d;
+    padding: 0.5rem 1rem;
+    border-radius: 7px;
+    text-decoration: none;
+ }
+
+ .footer-top{
+    margin-top: 2rem;
+    padding: 3rem;
+    background-color: #c20602;
+    color: #ffffff;
+ }
+ 
+ .footer-top-con{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    column-gap: 2rem;
+ }
+
+ .footer-top-item-con{
+    display: flex;
+    margin: 1rem 0;
+ }
+ .footer-top-item-con .date{
+    background-color: #ffffff;
+    color: black;
+    padding: 0.5rem;
+    border-radius: 5px;
+    text-align: center;
+    margin-right: 10px;
+ }
+
+.footer-top-item:nth-child(2) h4,
+.footer-top-item:nth-child(3) h4 {
+    margin-bottom: 1rem;
+}
+
+.footer-buttom{
+    background-color: #ffa43d;
+    padding: 1rem;
+    text-align: center;
+}
