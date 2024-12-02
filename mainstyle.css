@@ -93,6 +93,18 @@ text-decoration: none;
 
  .content-item h4{
     margin-top: 1rem;
+    color: #ffffff;
+
+ }
+
+ .content-title{
+    margin-top: 1rem;
+    padding: 0.1rem 1rem;
+    color: #ffffff;
+    text-align: center;
+    background-color: #ffa43d
+
+    
  }
  .content-item p{
     margin: 1rem 0;
@@ -140,6 +152,6 @@ text-decoration: none;
 
 .footer-buttom{
     background-color: #ffa43d;
-    padding: 1rem;
+    padding: 0.5rem;
     text-align: center;
 }
