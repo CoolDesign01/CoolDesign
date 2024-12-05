@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="mainstyle.css">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #ffa43d;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 20px 20px 20px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181#ffa43d;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+    
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="example.html">ChibiHead</a>
+  <a href="example2.html">ChibiKaemTuy</a>
+  <a href="example3.html">ChibiHalfbody</a>
+  <a href="example4.html">ChibiCarry</a>
+  <a href="example5.html">ChibiChristmas</a>
+</div>
+
+<div class="content-menu">
+    <div align="center">
+        <h2>menu</h2>
+    </div>
+
+<p> menu ผลงานทุกผลงานสามารถเลือก open เพื่อดูได้เลย...</p>
+</div>
+<div class="content-open">
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+</div>
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+</div>
+                <body style="background-image:url('images/หลัง2.png')">
+
+
+            <div class="content-item2">
+                <img src="images/ตัวอย่างแก้มตุ่ย03.png" alt="Ocean" width="250" height="250" style="position: relative; top:250px; left: 250px; ">
+            </div>
+
+</body>
+</html> 

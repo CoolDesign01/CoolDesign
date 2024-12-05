@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Cool Design</title>
     <link rel="stylesheet" href="mainstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="images/cool-01.png">
 
 </head>
@@ -14,12 +16,13 @@
             <div class="nav-con">
                 <div class="logo"><a href="#"> <img src="images/cool-01.png" alt="Ocean" width="50" height="50"> </a></div>
                 <ul class="menu">
-                    <li><a href="">หน้าหลัก</a></li>
-                    <li><a href="">สินค้า/บริการ</a></li>
-                    <li><a href="Payment.html">การชำระเงิน</a></li>
-                    <li><a href="">ติดต่อเรา</a></li>
+                    <li><a href=""><i class="fa fa-home" aria-hidden="true"></i> หน้าหลัก</a></li>
+                    <li><a href="Chibi.html"><i class="fa fa-th-list" aria-hidden="true"></i> สินค้า/บริการ</a></li>
+                    <li><a href="Payment.html"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> การชำระเงิน</a></li>
+                    <li><a href=""><i class="fa fa-info-circle" aria-hidden="true"></i> ราคา</a></li>
 
                 </ul>
+                
             </div>
         </div>
     </nav>
@@ -32,11 +35,61 @@
                     <a href="" class="maincontent-btn">เพิ่มเติม</a>
                 </div>
 
-                <div class="maincontent-img">
-                    <img src="images/-_L.png" alt="ฉลองเปิดร้าน">
-                    <body style="background-image:url('images/หลีัง.png')">
-                        ...
-                    </body>
+                <div class="slideshow-container"></div>
+
+                <div class="mySlides fade">
+                    
+                    <img src="images/-_L.png" style="width:100%">
+                    
+                  </div>
+
+                  <div class="mySlides fade">
+                    
+                    <img src="images/-_L.png" style="width:100%">
+                    
+                  </div>
+
+                  <div class="mySlides fade">
+                    
+                    <img src="images/-_L.png" style="width:100%">
+                    
+                  </div>
+
+                </div>
+                <br>
+
+                <div style="text-align:center">
+                    <span class="dot"></span> 
+                    <span class="dot"></span> 
+                    <span class="dot"></span> 
+                  </div>
+
+                  <script>
+                    let slideIndex = 0;
+                    showSlides();
+
+                    function showSlides() {
+                        let i;
+                        let slides = document.getElementsByClassName("mySlides");
+                        let dots = document.getElementsByClassName("dot");
+                        for (i = 0; i < slides.length; i++) {
+                            slides[i].style.display = "none";  
+                        }
+                        slideIndex++;
+                        if (slideIndex > slides.length) {slideIndex = 1}    
+                        for (i = 0; i < dots.length; i++) {
+                            dots[i].className = dots[i].className.replace(" active", "");
+                        }
+                        slides[slideIndex-1].style.display = "block";  
+                        dots[slideIndex-1].className += " active";
+                        setTimeout(showSlides, 2000); // Change image every 2 seconds
+                        }
+                        </script>
+
+
+                      <body style="background-image:url('images/หลัง2.png')">
+                        
+                      </body>
                 </div>
             </div>
         </div>
@@ -45,14 +98,14 @@
     <section class="content">
         <div class="conteainer">
             <div class="content-title">
-                <h3> <marquee behavior="alternate">แสดงรายการ / ผลงาน </marquee> </h3>
+                <h3><marquee direction="left"> ผลงานทุกผลงานลูกค้าสามารถดูได้เลย </marquee></h3>
             </div>
             <div class="content-con">
                 <div class="content-item">
                     <img src="images/ตัวอย่างแก้มตุ่ย03.png" alt="Ocean" width="250" height="250">
                     <h4>𝐶ℎ𝑖𝑏𝑖𝐾𝑎𝑒𝑚𝑇𝑢𝑦</h4>
                     <p></p>
-                    <a href="" class="">ดูรายการสินค้า</a>
+                    <a href="example2.html" class="">ดูรายการสินค้า</a>
                 </div>
                 <div class="content-item">
                     <img src="images/ตัวอย่างแก้มตุ่ย03.png" alt="Ocean" width="250" height="250">
@@ -115,9 +168,7 @@
                 </div>
                 <div class="footer-top-item">
                     <h4>social link</h4>
-                    <p>Facebook</p>
-                    <p>Google+</p>
-                    <p>discordapp</p>
+                    <p><i class="fa fa-share" aria-hidden="true"></i> Discord </p>
                 </div>
             </div>
         </div>
