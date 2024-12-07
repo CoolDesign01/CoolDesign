@@ -1,27 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Cool Design</title>
-    <link rel="stylesheet" href="mainstyle.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="icon" href="images/COOL_-_1.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cool Design</title>
+<link rel="stylesheet" href="mainstyle.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" href="images/COOL_-_1.png">
+
+<style> 
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #EEAB2890;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 20px 20px 20px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #ffffff;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #8f8dff;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+    </style>
+
 
 </head>
 <body> 
-    
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="example.html">ChibiHead</a>
+        <a href="example2.html">ChibiKaemTuy</a>
+        <a href="example3.html">ChibiHalfbody</a>
+        <a href="example4.html">ChibiCarry</a>
+        <a href="example5.html">ChibiChristmas</a>
+      </div>
+      <script>
+        function openNav() {
+          document.getElementById("mySidenav").style.width = "250px";
+        }
+        
+        function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+        }
+      </script>
+    </div>
     <nav>
         <div class="container">
             <div class="nav-con">
                 <div class="logo"><a href="#"> <img src="images/COOL_-_1.png" alt="Ocean" width="50" height="50"> </a></div>
                 <ul class="menu">
                     <li><a href=""><i class="fa fa-home" aria-hidden="true"></i> หน้าหลัก</a></li>
-                    <li><a href="Chibi.html"><i class="fa fa-th-list" aria-hidden="true"></i> สินค้า/บริการ</a></li>
+                    <li><span style="cursor:pointer" onclick="openNav()"><i class="fa fa-th-list"></i> สินค้า/บริการ </span></li>
                     <li><a href="Payment.html"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> การชำระเงิน</a></li>
-                    <li><a href=""><i class="fa fa-info-circle" aria-hidden="true"></i> ราคา</a></li>
-
+                    <li><a href=""><i class="fa fa-info-circle" aria-hidden="true" ></i> ราคา</a></li>
+                    
                 </ul>
                 
             </div>
@@ -90,12 +152,6 @@
 
 
                       <body style="background-image:url('images/หลัง2.png')"></body>
-
-                        <audio id="background-music" autoplay loop>
-                            <source src="เพลงบรรเลง.mp3" type="audio/mpeg">
-                        </audio>
-                        
-                      
                 </div>
             </div>
         </div>
@@ -133,14 +189,14 @@
         <div class="container">
             <div class="footer-top-con">
                 <div class="footer-top-item">
-                    <h4>รายการสินค้าและบริการ</h4>
+                    <h4>แบบเนื้อหา</h4>
                     <div class="footer-top-item-con">
                         <div class="date">
                             <img id="myImg1" src="images/รออัพ.png" alt=""width="50" height="50">
                         </div>
                         <div class="info">
-                            <spen class="info-title">รออัพหรือรอลงผลงาน.</spen>
-                            <spen class="info-fesc">รูปนี้ไม่ใช่ตัวอย่างแต่เป็นรูปที่รออัพเดทลงปลงาน</spen>
+                            <spen class="info-title"></spen>
+                            <spen class="info-fesc"></spen>
 
                         </div>
                     </div>
@@ -149,8 +205,8 @@
                             <img id="myImg1" src="images/รออัพ.png" alt=""width="50" height="50">
                         </div>
                         <div class="info">
-                            <spen class="info-title">Lorem ipsum dolor sit amet.</spen>
-                            <spen class="info-fesc">Lorem ipsum dolor sit, amet consectetur adipisicing.</spen>
+                            <spen class="info-title"></spen>
+                            <spen class="info-fesc"></spen>
                             
                         </div>
                     </div>
@@ -166,8 +222,26 @@
                     </div>
                 </div>
                 <div class="footer-top-item">
-                    <h4>เกี่ยวกับเรา</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur.</p>
+                    <h4>เมนูส่วนเสริม</h4>
+                    <p><u> แกเลอรีแนะนำ</u></p>
+                    <br>
+                    <p><u> ประกาศ</u></p>
+                    <br>
+                    <p><u> ราคา</u></p>
+                    <br>
+                        
+                    </p>
+                </div>
+                <div class="footer-top-item">
+                    <h4>บริการ</h4>
+                    <p><u> ผลงานแนะนำ</u></p>
+                    <br>
+                    <p><u> รูปภาพ</u></p>
+                    <br>
+                    <p><u> ราคา</u></p>
+                    <br>
+                        
+                    </p>
                 </div>
                 <div class="footer-top-item">
                     <h4>social link</h4>

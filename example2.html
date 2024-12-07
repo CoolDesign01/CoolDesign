@@ -2,8 +2,55 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cool Design</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="mainstyle.css">
+<link rel="icon" href="images/COOL_-_1.png">
 <style>
+   body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #EEAB2890;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 20px 20px 20px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #ffffff;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #8f8dff;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+/* ปิดopen*/
+
 body {font-family: Arial, Helvetica, sans-serif;}
 
 #myImg {
@@ -108,17 +155,46 @@ body {font-family: Arial, Helvetica, sans-serif;}
 </style>
 </head>
 <body> 
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> หน้าหลัก</a>
+    <a href="example.html">ChibiHead</a>
+    <a href="example2.html">ChibiKaemTuy</a>
+    <a href="example3.html">ChibiHalfbody</a>
+    <a href="example4.html">ChibiCarry</a>
+    <a href="example5.html">ChibiChristmas</a>
+  </div>
+  <div class="content-open3">
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+    </div>
+    <script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+    }
+    
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+  </script>
+</div>
+
   <body style="background-image:url('images/หลัง2.png')">
 
+    <div class="content-menu3">
     <div align="center">   
         <h2>ChibiKaemTuy</h2>
         <p>ผลงานจิบิแก้มตุ่ยทุกผลงานลูกค้าสามารถดูได้เลย</p>
         <p>ผลงานในนี้เป็นเพียงตัวอย่างเท่านั้นหากลูกค้าท่านใดสนใจสามารถติดต่อใน DC ได้เลย.</p>
         </div>
 
+
+      </div>
+    <div class="content-my">  
 <img id="myImg" src="images/ตัวอย่างแก้มตุ่ย03.png" alt="ตัวอย่าง" style="width:100%;max-width:300px">
 <img id="myImg2" src="images/ตัวอย่างแก้มตุ่ย.png" alt="ตัวอย่าง" style="width:100%;max-width:300px">
 <img id="myImg3" src="images/รออัพ.png" alt="รออัพเดท" style="width:100%;max-width:300px">
+</div>
+
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
