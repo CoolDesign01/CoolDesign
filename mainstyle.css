@@ -76,6 +76,9 @@ text-decoration: none;
    text-decoration: none;
 }
 
+
+
+
 .slideshow-container{
    width: 85%;
    padding: 1rem;
@@ -98,13 +101,14 @@ text-decoration: none;
    
 }
 
+/*ข้อความใต้รูปหน้าหลัก ปิดไว้
 .content-item h4{
    position: relative;
-   left: 89px;
+   
    margin-top: 0.5rem;
    color: #ffffff;
 
-}
+}*/
 
 .content-title{
    margin-top: 1rem;
@@ -121,7 +125,7 @@ text-decoration: none;
 
 .content-item a{
    position: relative;
-   left: 89px;
+   left: 160px;
    display: inline-block;
    color: #ffffff;
    background-color: #ffa43d;
@@ -129,7 +133,16 @@ text-decoration: none;
    border-radius: 7px;
    text-decoration: none;
 }
-
+.content-item2 a{
+  position: relative;top: 30px;
+  left: 30px;
+  display: inline-block;
+  color: #ffffff;
+  background-color: #a882ffbb;
+  padding: 0.5rem 0.5rem;
+  border-radius: 7px;
+  text-decoration: none;
+}
 .footer-top{
    margin-top: 5rem;
    padding: 2.5rem;
@@ -139,8 +152,8 @@ text-decoration: none;
 
 .footer-top-con{
    display: grid;
-   grid-template-columns: 1fr 1fr 1fr 1fr ;
-   column-gap: 3rem;
+   grid-template-columns: 1fr 1fr 1fr 1fr;
+   column-gap: 6rem;
 }
 
 .footer-top-item-con{
@@ -149,14 +162,14 @@ text-decoration: none;
 }
 
 #myImg1 {
-  border-radius: 5px;
+  border-radius: 20px;
   cursor: pointer;
   transition: 0.3s;
 }
 
 
 .footer-top-item-con .date{
-  padding: 0.5rem;
+  padding: 0.1rem;
   border-radius: 5px;
   text-align: center;
   margin-right: 10px;
@@ -174,10 +187,12 @@ text-decoration: none;
    text-align: center;
 }
 
-nav a:hover {
+nav-menu a:hover {
    
-  color: #26484f;
+  color: #e0e0e0;
 }
+
+
 
 nav span:hover {
    
@@ -471,11 +486,11 @@ nav span:hover {
    .text {font-size: 11px}
  }
 .content-menu1{
-   position: relative;
-   left: 500px;
+   position: relative;top: -390px;
+   left: 530px;
    display: inline-block;
    color: #ffffff;
-   background-color: #ffa43d;
+   background-color: #ffafba90;
    padding: 0.5rem 0.5rem;
    border-radius: 7px;
    text-decoration: none;
@@ -526,8 +541,8 @@ nav span:hover {
 }
 
 .content-open{
-   position: relative; top: -20px;
-   left: -390px;
+   position: relative; top: -390px;
+   left: -350px;
    display: inline-block;
    color: #ffffff;
    padding: 1rem 1rem;
@@ -541,7 +556,6 @@ nav span:hover {
    left: 10px;
    display: inline-block;
    color: #ffffff;
-   background-color: #88a4ff;
    padding: 0.2rem 0.2rem;
    border-radius: 7px;
    text-decoration: none;
@@ -576,3 +590,18 @@ nav span:hover {
    border-radius: 7px;
    text-decoration: none;
 }
+
+/*price*/
+
+.content-price{
+  position: relative;
+  left:-130px;
+  top: 130px;
+  display: inline-block;
+  color: #ffffff;
+  background-color: #226A5E;
+  padding: 1rem 5rem;
+  border-radius: 7px;
+  text-decoration: none;
+}
+

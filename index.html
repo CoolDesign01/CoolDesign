@@ -51,6 +51,15 @@ body {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+
+.content-item img{
+  transition: all 0.5s ease-in;
+}
+.content-item img:hover{
+  transform: rotate(10deg);
+}
+
+
     </style>
 
 
@@ -82,7 +91,7 @@ body {
                     <li><a href=""><i class="fa fa-home" aria-hidden="true"></i> หน้าหลัก</a></li>
                     <li><span style="cursor:pointer" onclick="openNav()"><i class="fa fa-th-list"></i> สินค้า/บริการ </span></li>
                     <li><a href="Payment.html"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> การชำระเงิน</a></li>
-                    <li><a href=""><i class="fa fa-info-circle" aria-hidden="true" ></i> ราคา</a></li>
+                    <li><a href="Chibi.html"><i class="fa fa-info-circle" aria-hidden="true" ></i> ราคา</a></li>
                     
                 </ul>
                 
@@ -104,19 +113,19 @@ body {
                 
                 <div class="mySlides fade">
                     
-                    <img src="images/-_L.png" style="width:100%">
+                    <img id="myImg1" src="images/-_L.png" style="width:100%">
                     
                   </div>
 
                   <div class="mySlides fade">
                     
-                    <img src="images/ลดลด.png" style="width:100%">
+                    <img id="myImg1" src="images/ลดลด.png" style="width:100%">
                     
                   </div>
 
                   <div class="mySlides fade">
                     
-                    <img src="images/เวลาเปิด.png" style="width:100%">
+                    <img id="myImg1" src="images/เวลาเปิด.png" style="width:100%">
                     </div>
                 </div>
                 <br>
@@ -145,7 +154,7 @@ body {
                         }
                         slides[slideIndex-1].style.display = "block";  
                         dots[slideIndex-1].className += " active";
-                        setTimeout(showSlides, 2500); // Change image every 2 seconds
+                        setTimeout(showSlides, 3000); // Change image every 2 seconds
                         }
                         
                         </script>
@@ -164,22 +173,22 @@ body {
             </div>
             <div class="content-con">
                 <div class="content-item">
-                    <img src="images/ตัวอย่างแก้มตุ่ย03.png" alt="Ocean" width="250" height="250">
-                    <h4>𝐶ℎ𝑖𝑏𝑖𝐾𝑎𝑒𝑚𝑇𝑢𝑦</h4>
+                    <img id="" src="images/ตัวอย่างแก้มตุ่ย03.png" alt="Ocean" width="250" height="250" style="position: relative;  left: 65px; ">
+                    
                     <p></p>
                     <a href="example2.html" class="">ดูรายการสินค้า</a>
                 </div>
                 <div class="content-item">
-                    <img src="images/ตัวอย่างแก้มตุ่ย03.png" alt="Ocean" width="250" height="250">
-                    <h4>𝐶ℎ𝑖𝑏𝑖𝐾𝑎𝑒𝑚𝑇𝑢𝑦</h4>
+                    <img id="" src="images/ตัวอย่างแก้มตุ่ย.png" alt="Ocean" width="250" height="250" style="position: relative;  left: 65px; ">
+                    
                     <p></p>
-                    <a href="" class="">ดูรายการสินค้า</a>
+                    <a  class="">ดูรายการสินค้า</a>
                 </div>
                 <div class="content-item">
-                    <img src="images/ตัวอย่างแก้มตุ่ย03.png" alt="Ocean" width="250" height="250">
-                    <h4>𝐶ℎ𝑖𝑏𝑖𝐾𝑎𝑒𝑚𝑇𝑢𝑦</h4>
+                    <img id="" src="images/ตัวอย่างแก้มตุ่ย03.png" alt="Ocean" width="250" height="250" style="position: relative;  left: 65px; ">
+                    
                     <p></p>
-                    <a href="" class="">ดูรายการสินค้า</a>
+                    <a  class="">ดูรายการสินค้า</a>
                 </div>
             </div>
         </div>
@@ -189,10 +198,10 @@ body {
         <div class="container">
             <div class="footer-top-con">
                 <div class="footer-top-item">
-                    <h4>แบบเนื้อหา</h4>
+                    <h4><u>แบบเนื้อหา</u></h4>
                     <div class="footer-top-item-con">
                         <div class="date">
-                            <img id="myImg1" src="images/รออัพ.png" alt=""width="50" height="50">
+                            <a> ส่วนหัว </a>
                         </div>
                         <div class="info">
                             <spen class="info-title"></spen>
@@ -202,7 +211,7 @@ body {
                     </div>
                     <div class="footer-top-item-con">
                         <div class="date">
-                            <img id="myImg1" src="images/รออัพ.png" alt=""width="50" height="50">
+                            <a> แถบเมนูของรายการ</a>
                         </div>
                         <div class="info">
                             <spen class="info-title"></spen>
@@ -212,7 +221,7 @@ body {
                     </div>
                     <div class="footer-top-item-con">
                         <div class="date">
-                            <img id="myImg1" src="images/เวลาเปิด.png" alt=""width="50" height="50">
+                            <a> บทความเดี่ยว(ส่วนท้าย)</a>
                         </div>
                         <div class="info">
                             <spen class="info-title"></spen>
@@ -222,30 +231,31 @@ body {
                     </div>
                 </div>
                 <div class="footer-top-item">
-                    <h4>เมนูส่วนเสริม</h4>
-                    <p><u> แกเลอรีแนะนำ</u></p>
+                    <h4><u>เมนูส่วนเสริม</u></h4>
+                    <p> แกเลอรีแนะนำ</p>
                     <br>
-                    <p><u> ประกาศ</u></p>
+                    <p> ประกาศ</p>
                     <br>
-                    <p><u> ราคา</u></p>
-                    <br>
-                        
-                    </p>
-                </div>
-                <div class="footer-top-item">
-                    <h4>บริการ</h4>
-                    <p><u> ผลงานแนะนำ</u></p>
-                    <br>
-                    <p><u> รูปภาพ</u></p>
-                    <br>
-                    <p><u> ราคา</u></p>
+                    <p> ราคา</p>
                     <br>
                         
                     </p>
                 </div>
                 <div class="footer-top-item">
-                    <h4>social link</h4>
-                    <a href="https://discord.gg/DVSGYggJ5e"><i class="fa fa-share" aria-hidden="true"></i> Discord </a>
+                    <h4><u>บริการ</u></h4>
+                    <p> ผลงานแนะนำ</p>
+                    <br>
+                    <p> รูปภาพ</p>
+                    <br>
+                    <p> ราคา</p>
+                    <br>
+                        
+                    </p>
+                </div>
+                <div class="footer-top-item">
+                    <h4><u>social link</u></h4>
+                    <br>
+                    <a href="https://discord.gg/DVSGYggJ5e"><i class="fa fa-link" aria-hidden="true"></i> Discord </a>
                     
                 </div>
             </div>
