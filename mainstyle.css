@@ -138,7 +138,7 @@ text-decoration: none;
   left: 30px;
   display: inline-block;
   color: #ffffff;
-  background-color: #a882ffbb;
+  background-color: #26484f;
   padding: 0.5rem 0.5rem;
   border-radius: 7px;
   text-decoration: none;
@@ -159,6 +159,11 @@ text-decoration: none;
 .footer-top-item-con{
    display: flex;
    margin: 1rem 0;
+}
+
+.footer-top-item .discord a{
+  color: #ffffff;
+
 }
 
 #myImg1 {
