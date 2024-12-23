@@ -1,267 +1,195 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cool Design</title>
-<link rel="stylesheet" href="mainstyle.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="icon" href="images/COOL_-_1.png">
-
-<style> 
-body {
-  font-family: "Lato", sans-serif;
-}
-
-.sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #EEAB2890;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-}
-
-.sidenav a {
-  padding: 20px 20px 20px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #ffffff;
-  display: block;
-  transition: 0.3s;
-}
-
-.sidenav a:hover {
-    color: #8f8dff;
-}
-
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-
-.content-item img{
-  transition: all 0.5s ease-in;
-}
-.content-item img:hover{
-  transform: rotate(10deg);
-}
-
-
-    </style>
-
-
-</head>
-<body> 
-    <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="example.html">ChibiHead</a>
-        <a href="example2.html">ChibiKaemTuy</a>
-        <a href="example3.html">ChibiHalfbody</a>
-        <a href="example4.html">ChibiCarry</a>
-        <a href="example5.html">ChibiChristmas</a>
-      </div>
-      <script>
-        function openNav() {
-          document.getElementById("mySidenav").style.width = "250px";
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Register</title>
+    <style>
+       /* ตั้งค่าเริ่มต้น */
+       body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #9affee, #c4e2fa, #c2c8fb, #a18cd1);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
+
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px; /* ความกว้างสูงสุด */
+            text-align: center;
+        }
+
         
-        function closeNav() {
-          document.getElementById("mySidenav").style.width = "0";
+        .container h2 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            color: #333;
         }
-      </script>
+
+        
+
+        .container input {
+            width: 100%;
+            padding: 5px;
+            margin: 10px 0;
+            border: 1px solid #bebebe;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        .container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .container button:hover {
+            background-color: #0056b3;
+        }
+
+        .switch {
+            margin-top: 15px;
+            font-size: 0.9em;
+            cursor: pointer;
+            color: #007BFF;
+        }
+
+        .switch:hover {
+            text-decoration: underline;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+            display: none;
+        }
+
+        /* Media Queries สำหรับหน้าจอขนาดเล็ก */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .container h2 {
+                font-size: 1.2em;
+            }
+
+            .container input, 
+            .container button {
+                font-size: 0.9em;
+                padding: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+
+            .container h2 {
+                font-size: 1em;
+            }
+
+            .container input, 
+            .container button {
+                font-size: 0.8em;
+                padding: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="text" id="login-username" placeholder="Username" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p class="error" id="login-error">ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง!!!</p>
+        <p class="switch" onclick="switchToRegister()">ยังไม่มีบัญชี? ลงทะเบียนที่นี่</p>
     </div>
-    <nav>
-        <div class="container">
-            <div class="nav-con">
-                <div class="logo"><a href="#"> <img src="images/COOL_-_1.png" alt="Ocean" width="50" height="50"> </a></div>
-                <ul class="menu">
-                    <li><a href=""><i class="fa fa-home" aria-hidden="true"></i> หน้าหลัก</a></li>
-                    <li><span style="cursor:pointer" onclick="openNav()"><i class="fa fa-th-list"></i> สินค้า/บริการ </span></li>
-                    <li><a href="Payment.html"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> การชำระเงิน</a></li>
-                    <li><a href="Chibi.html"><i class="fa fa-info-circle" aria-hidden="true" ></i> ราคา</a></li>
-                    
-                </ul>
-                
-            </div>
-        </div>
-    </nav>
-    <section class="maincontent">
-        <div class="container">
-            <div class="maincontent-con">
-                <div class="maincontent-info">
-                    <h3>Announce <img src="images/promotion.png" alt="Ocean" width="40" height="40"></h3>
-                    <p>ประกาศ !!! เว็บไวต์นี้มีเพื่อไว้โชว์ตัวอย่างของงานต่างๆ ที่มีในDiscordทางร้านได้ทำการนำมาไว้ในเว็บไซต์นี้</p>
-                    <a href="" class="maincontent-btn">เพิ่มเติม</a>
-                </div>
 
-                <div class="slideshow-container"></div>
-
-
-                
-                <div class="mySlides fade">
-                    
-                    <img id="myImg1" src="images/-_L.png" style="width:100%">
-                    
-                  </div>
-
-                  <div class="mySlides fade">
-                    
-                    <img id="myImg1" src="images/ลดลด.png" style="width:100%">
-                    
-                  </div>
-
-                  <div class="mySlides fade">
-                    
-                    <img id="myImg1" src="images/เวลาเปิด.png" style="width:100%">
-                    </div>
-                </div>
-                <br>
-
-                <div style="text-align:center">
-                    <span class="dot"></span> 
-                    <span class="dot"></span> 
-                    <span class="dot"></span> 
-                  </div>
-
-                  <script>
-                    let slideIndex = 0;
-                    showSlides();
-
-                    function showSlides() {
-                        let i;
-                        let slides = document.getElementsByClassName("mySlides");
-                        let dots = document.getElementsByClassName("dot");
-                        for (i = 0; i < slides.length; i++) {
-                            slides[i].style.display = "none";  
-                        }
-                        slideIndex++;
-                        if (slideIndex > slides.length) {slideIndex = 1}    
-                        for (i = 0; i < dots.length; i++) {
-                            dots[i].className = dots[i].className.replace(" active", "");
-                        }
-                        slides[slideIndex-1].style.display = "block";  
-                        dots[slideIndex-1].className += " active";
-                        setTimeout(showSlides, 3000); // Change image every 2 seconds
-                        }
-                        
-                        </script>
-
-
-                      <body style="background-image:url('images/หลัง2.png')"></body>
-                </div>
-            </div>
-        </div>
-
-    </section>
-    <section class="content">
-        <div class="conteainer">
-            <div class="content-title">
-                <h3><marquee direction="left"> ผลงานทุกผลงานลูกค้าสามารถดูได้เลย </marquee></h3>
-            </div>
-            <div class="content-con">
-                <div class="content-item">
-                    <img id="" src="images/ตัวอย่างแก้มตุ่ย03.png" alt="Ocean" width="250" height="250" style="position: relative;  left: 65px; ">
-                    
-                    <p></p>
-                    <a href="example2.html" class="">ดูรายการสินค้า</a>
-                </div>
-                <div class="content-item">
-                    <img id="" src="images/ตัวอย่างแก้มตุ่ย.png" alt="Ocean" width="250" height="250" style="position: relative;  left: 65px; ">
-                    
-                    <p></p>
-                    <a  class=""></a>
-                </div>
-                <div class="content-item">
-                    <img id="" src="images/ตัวอย่างแก้มตุ่ย03.png" alt="Ocean" width="250" height="250" style="position: relative;  left: 65px; ">
-                    
-                    <p></p>
-                    <a  class=""></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="footer-top">
-        <div class="container">
-            <div class="footer-top-con">
-                <div class="footer-top-item">
-                    <h4><u>แบบเนื้อหา</u></h4>
-                    <div class="footer-top-item-con">
-                        <div class="date">
-                            <a> ส่วนหัว </a>
-                        </div>
-                        <div class="info">
-                            <spen class="info-title"></spen>
-                            <spen class="info-fesc"></spen>
-
-                        </div>
-                    </div>
-                    <div class="footer-top-item-con">
-                        <div class="date">
-                            <a> แถบเมนูของรายการ</a>
-                        </div>
-                        <div class="info">
-                            <spen class="info-title"></spen>
-                            <spen class="info-fesc"></spen>
-                            
-                        </div>
-                    </div>
-                    <div class="footer-top-item-con">
-                        <div class="date">
-                            <a> บทความเดี่ยว(ส่วนท้าย)</a>
-                        </div>
-                        <div class="info">
-                            <spen class="info-title"></spen>
-                            <spen class="info-fesc"></spen>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-top-item">
-                    <h4><u>เมนูส่วนเสริม</u></h4>
-                    <p> แกเลอรีแนะนำ</p>
-                    <br>
-                    <p> ประกาศ</p>
-                    <br>
-                    <p> ราคา</p>
-                    <br>
-                        
-                    </p>
-                </div>
-                <div class="footer-top-item">
-                    <h4><u>บริการ</u></h4>
-                    <p> ผลงานแนะนำ</p>
-                    <br>
-                    <p> รูปภาพ</p>
-                    <br>
-                    <p> ราคา</p>
-                    <br>
-                        
-                    </p>
-                </div>
-                <div class="footer-top-item">
-                    <div class="discord">
-                    <h4><u>social link</u></h4>
-                    <br>      
-                        <a href="https://discord.gg/DVSGYggJ5e"><i class="fa fa-link" aria-hidden="true"></i> Discord </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="container" id="register-container" style="display: none;">
+        <h2>Register</h2>
+        <form id="registerForm">
+            <input type="text" id="register-username" placeholder="Choose a username" required>
+            <input type="password" id="register-password" placeholder="Choose a password" required>
+            <button type="submit">Register</button>
+        </form>
+        <p class="error" id="register-error">Username already exists</p>
+        <p class="switch" onclick="switchToLogin()">มีบัญชีอยู่แล้ว? เข้าสู่ระบบที่นี่</p>
     </div>
-    <div class="footer-buttom">© 2024 ร้านค้าออนไลน์ | สงวนลิขสิทธิ์</div>
+
+    
+    <script>
+        // โค้ด JavaScript สำหรับการล็อกอิน
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('login-username').value;
+            const password = document.getElementById('login-password').value;
+            alert(`เข้าสู่ระบบด้วยชื่อผู้ใช้: ${username}, รหัสผ่าน: ${password}`);
+        });
+    </script>
+
+    <script>
+        // ฟังก์ชันเปลี่ยนไปหน้าสมัครสมาชิก
+        function switchToRegister() {
+            document.getElementById('login-container').style.display = 'none';
+            document.getElementById('register-container').style.display = 'block';
+        }
+
+        // ฟังก์ชันเปลี่ยนไปหน้าล็อกอิน
+        function switchToLogin() {
+            document.getElementById('register-container').style.display = 'none';
+            document.getElementById('login-container').style.display = 'block';
+        }
+
+        // ฟังก์ชันสำหรับการสมัครสมาชิก
+        document.getElementById('registerForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // หยุดการส่งฟอร์ม
+            const username = document.getElementById('register-username').value;
+            const password = document.getElementById('register-password').value;
+
+            // ตรวจสอบว่ามีชื่อผู้ใช้อยู่แล้วใน Local Storage หรือไม่
+            const users = JSON.parse(localStorage.getItem('users')) || {};
+            if (users[username]) {
+                document.getElementById('register-error').style.display = 'block';
+            } else {
+                users[username] = password; // บันทึกข้อมูลผู้ใช้
+                localStorage.setItem('users', JSON.stringify(users)); // เก็บข้อมูลลง Local Storage
+                alert('การลงทะเบียนสำเร็จ! ตอนนี้คุณสามารถเข้าสู่ระบบ.');
+                switchToLogin(); // เปลี่ยนไปหน้าล็อกอิน
+            }
+        });
+
+        // ฟังก์ชันสำหรับการล็อกอิน
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // หยุดการส่งฟอร์ม
+            const username = document.getElementById('login-username').value;
+            const password = document.getElementById('login-password').value;
+
+            // ดึงข้อมูลผู้ใช้จาก Local Storage
+            const users = JSON.parse(localStorage.getItem('users')) || {};
+            if (users[username] && users[username] === password) {
+                alert('เข้าสู่ระบบสำเร็จ! กำลังเปลี่ยนเส้นทางไปยังหน้าแรก...');
+                window.location.href = "home.html"; // เปลี่ยนหน้าเมื่อสำเร็จ
+            } else {
+                document.getElementById('login-error').style.display = 'block';
+            }
+        });
+    </script>
 </body>
 </html>

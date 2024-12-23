@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise for My Love</title>
+    <style>
+        body {
+            font-family: 'Press Start 2P', cursive;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-image: url('https://via.placeholder.com/1920x1080/ffccff/000000?text=Background');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            animation: moveBackground 30s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        /* ฟอร์มล็อกอิน */
+        .login-container {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            width: 80%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .login-container input {
+            padding: 10px;
+            margin: 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: none;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .login-container button {
+            padding: 10px 20px;
+            background-color: #ff66b2;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .login-container button:hover {
+            background-color: #ff3385;
+        }
+
+        /* นับเวลาถอยหลัง */
+        .countdown {
+            font-size: 2rem;
+            margin-top: 50px;
+        }
+
+        .surprise-page {
+            display: none;
+            margin-top: 50px;
+        }
+
+        .surprise-page h2 {
+            font-size: 2rem;
+            color: #ff99cc;
+        }
+
+        /* ข้อความลอย */
+        .floating-message {
+            display: none;
+            position: absolute;
+            font-size: 1.5rem;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 10px;
+            animation: fadeIn 2s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* ปุ่มต่างๆ */
+        .button-container {
+            margin-top: 30px;
+        }
+
+        .button {
+            background: #ff66b2;
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+            background: #ff3385;
+        }
+
+        /* ปุ่มดูรูป */
+        .gallery-button {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            padding: 10px 20px;
+            background-color: #ff80bf;
+            border: none;
+            border-radius: 30px;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-button:hover {
+            background-color: #ff3385;
+            transform: scale(1.1);
+        }
+
+        /* ปุ่มเปิดเพลง */
+        .music-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 10px 20px;
+            background-color: #ff66b2;
+            border: none;
+            border-radius: 30px;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .music-button:hover {
+            background-color: #ff3385;
+            transform: scale(1.1);
+        }
+
+        /* แกลเลอรี่ */
+        .gallery {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            margin-top: 50px;
+            padding: 20px;
+        }
+
+        .gallery img {
+            max-width: 100%;
+            width: 400px;
+            margin: 0 10px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            animation: slideIn 10s infinite linear;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateX(100%);
+            }
+            50% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .login-container {
+                width: 90%;
+                padding: 15px;
+            }
+
+            .login-container input,
+            .login-container button,
+            .button {
+                font-size: 1rem;
+                padding: 12px;
+                width: 100%;
+            }
+
+            .countdown {
+                font-size: 1.5rem;
+            }
+
+            .gallery img {
+                width: 80%;
+            }
+
+            .music-button,
+            .gallery-button {
+                font-size: 1rem;
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                width: 95%;
+                padding: 10px;
+            }
+
+            .login-container input,
+            .login-container button,
+            .button {
+                font-size: 0.9rem;
+                padding: 10px;
+            }
+
+            .countdown {
+                font-size: 1.2rem;
+            }
+
+            .gallery img {
+                width: 70%;
+            }
+
+            .music-button,
+            .gallery-button {
+                font-size: 0.9rem;
+                padding: 8px 12px;
+            }
+        }
+
+        /* สไตล์กระดาษ */
+        .paper {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #ccc;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            margin: 30px auto;
+            display: none;
+            position: relative;
+        }
+
+        /* ตัวอักษรพิมพ์เหมือนพิมพ์บนกระดาษ */
+        .typing-text {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.5rem;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid black;
+            width: 0;
+            animation: typing 5s steps(50) 1s forwards, blink 0.75s step-end infinite;
+        }
+
+        /* การพิมพ์ */
+        @keyframes typing {
+            to {
+                width: 100%;
+            }
+        }
+
+        /* การกระพริบของเคอร์เซอร์ */
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ฟอร์มล็อกอิน -->
+    <div class="login-container">
+        <h2>Please Login</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="startCountdown()">Login</button>
+    </div>
+
+    <!-- นับเวลาถอยหลัง -->
+    <div class="countdown" id="countdown">
+        5
+    </div>
+
+    <!-- หน้าเซอร์ไพรส์ -->
+    <div class="surprise-page" id="surprisePage">
+        <h2>Surprise! 💖</h2>
+        <button class="button" onclick="showMessage()">Click for Surprise</button>
+    </div>
+
+    <!-- ข้อความลอย -->
+    <div class="floating-message" id="floatingMessage">
+        You're my world! 🌍💖
+    </div>
+
+    <!-- ปุ่มเปิดแกลเลอรี่ -->
+    <button class="gallery-button" onclick="toggleGallery()">View Gallery</button>
+
+    <!-- แกลเลอรี่ -->
+    <div class="gallery" id="gallery" style="display: none;">
+        <img src="images/DSC01938.jpg" alt="Image 1">
+        <img src="https://via.placeholder.com/400/FF69B4/FFFFFF?text=Image+2" alt="Image 2">
+        <img src="https://via.placeholder.com/400/FF80BF/FFFFFF?text=Image+3" alt="Image 3">
+    </div>
+
+    <!-- ปุ่มเปิดเพลง -->
+    <button class="music-button" onclick="toggleMusic()">Play Music</button>
+
+    <!-- กระดาษที่จะพิมพ์ข้อความ -->
+    <div class="paper" id="paper">
+        <button class="close-button" onclick="closeMessage()">Close</button>
+        <div class="typing-text" id="typingText"></div>
+    </div>
+    
+
+    <footer>
+        Made with ❤️ for You
+    </footer>
+
+    <script>
+        let countdownTimer;
+        let timeLeft = 5; // 10 minutes countdown in seconds
+        let musicPlaying = false;
+        let audio = new Audio('file:///C:/Users/Atichat/Downloads/BENT%20-%20%E0%B8%A3%E0%B8%81%E0%B9%81%E0%B8%9F%E0%B8%99%20[OFFICIAL%20MV]%20-%20Bz.%E3%83%99%E3%83%B3%E3%83%84.mp3');
+        audio.loop = true;
+
+        // ฟังก์ชันนับเวลาถอยหลัง
+        function startCountdown() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const correctPassword = "12345"; // รหัสผ่านที่ถูกต้อง
+
+            if (password !== correctPassword) {
+                alert("Incorrect password!");
+                return;
+            }
+
+            document.querySelector('.login-container').style.display = 'none';
+            countdownTimer = setInterval(updateCountdown, 1000);
+        }
+
+        function updateCountdown() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('countdown').innerHTML = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+            if (timeLeft <= 0) {
+                clearInterval(countdownTimer);
+                showSurprisePage();
+            } else {
+                timeLeft--;
+            }
+        }
+
+        // ฟังก์ชันแสดงหน้าเซอร์ไพรส์
+        function showSurprisePage() {
+            document.getElementById('surprisePage').style.display = 'block';
+        }
+
+        // ฟังก์ชันแสดงข้อความลอย
+        function showMessage() {
+            const message = document.getElementById('floatingMessage');
+            message.style.display = 'block';
+
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 3000);
+
+            // แสดงข้อความบนกระดาษ
+            const paper = document.getElementById('paper');
+            const typingText = document.getElementById('typingText');
+            paper.style.display = 'block';
+            typingText.textContent = "Happy Birthday, my love! 💖 You are the best!";
+        }
+
+        // ฟังก์ชันเปิดแกลเลอรี่
+        function toggleGallery() {
+            const gallery = document.getElementById('gallery');
+            gallery.style.display = (gallery.style.display === 'none' || gallery.style.display === '') ? 'flex' : 'none';
+        }
+
+        // ฟังก์ชันเปิด/ปิดเพลง
+        function toggleMusic() {
+            if (musicPlaying) {
+                audio.pause();
+                musicPlaying = false;
+            } else {
+                audio.play();
+                musicPlaying = true;
+            }
+        }
+
+        function closeMessage() {
+            const paper = document.getElementById('paper');
+            paper.style.display = 'none';
+        }
+
+        function answerQuestion() {
+            alert("Thank you for your answer!");
+        }
+    </script>
+
+</body>
+</html>

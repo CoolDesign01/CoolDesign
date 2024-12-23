@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cool Design</title>
+<link rel="stylesheet" href="mainstyle.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" href="images/COOL_-_1.png">
+
+<style> 
+body {
+  font-family: "Lato", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #EEAB2890;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 20px 20px 20px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #ffffff;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #8f8dff;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.content-item img{
+  transition: all 0.5s ease-in;
+}
+.content-item img:hover{
+  transform: rotate(10deg);
+}
+/* ปุ่มหลัก */
+            button {
+            padding: 12px 24px;
+            font-size: 1.2em;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        button {
+      background: linear-gradient(90deg, #fd944e, #ffbb63);
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #ffbb63, #fd944e);
+      transform: scale(1.05);
+    }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        /* กล่องข้อความ */
+        #message-container {
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s ease;
+            font-size: 1em;
+            margin-top: 20px;
+            padding: 20px 30px;
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            text-align: center;
+        }
+
+        #message-container.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #close-btn {
+        position: absolute;
+        top: -5%;  /* ระยะห่างจากด้านล่าง */
+        left: 99%;  /* ระยะห่างจากด้านซ้าย */
+        transform: translate(-50%, -50%);
+        background-color: #ff4d4d;
+        color: #ffffff;
+        border: none;
+        border-radius: 50%;
+        width: 35px; /* ปรับขนาดปุ่ม */
+        height: 35px;
+        cursor: pointer;
+        font-size: 18px; /* ขนาดตัวอักษร */
+        display: flex;
+        align-items: center; /* จัดข้อความให้อยู่กลางแนวตั้ง */
+        justify-content: center; /* จัดข้อความให้อยู่กลางแนวนอน */
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s, background-color 0.3s;
+    }
+
+        /* เอฟเฟกต์เมื่อโฮเวอร์ */
+        #close-btn:hover {
+            
+            background-color: #e60000;
+        }
+
+    
+
+        #message {
+            font-size: 1.2em;
+            color: #333;
+            margin: 0;
+        }
+
+    </style>
+
+
+</head>
+<body> 
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="example.html">ChibiHead</a>
+        <a href="example2.html">ChibiKaemTuy</a>
+        <a href="example3.html">ChibiHalfbody</a>
+        <a href="example4.html">ChibiCarry</a>
+        <a href="example5.html">ChibiChristmas</a>
+      </div>
+      <script>
+        function openNav() {
+          document.getElementById("mySidenav").style.width = "250px";
+        }
+        
+        function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+        }
+      </script>
+    </div>
+    <nav>
+        <div class="container">
+            <div class="nav-con">
+                <div class="logo"><a href="#"> <img src="images/COOL_-_1.png" alt="Ocean" width="50" height="50"> </a></div>
+                <ul class="menu">
+                    <li><a href=""><i class="fa fa-home" aria-hidden="true"></i> หน้าหลัก</a></li>
+                    <li><span style="cursor:pointer" onclick="openNav()"><i class="fa fa-th-list"></i> สินค้า/บริการ </span></li>
+                    <li><a href="Payment.html"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> การชำระเงิน</a></li>
+                    <li><a href="Chibi.html"><i class="fa fa-info-circle" aria-hidden="true" ></i> ราคา</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </nav>
+    <section class="maincontent">
+        <div class="container">
+            <div class="maincontent-con">
+                <div class="maincontent-info">
+                    <h3>Announce <img src="images/promotion.png" alt="Ocean" width="40" height="40"></h3>
+                    <p>ประกาศ !!! เว็บไวต์นี้มีเพื่อไว้โชว์ตัวอย่างของงานต่างๆ ที่มีในDiscordทางร้านได้ทำการนำมาไว้ในเว็บไซต์นี้</p>
+                     <!-- ปุ่มแสดงข้อความ -->
+                     <button onclick="showMessage()">เพิ่มเติม!</button>
+
+                     <div id="message-container">
+                            <button id="close-btn" onclick="hideMessage()">×</button>
+                         <p id="message">สวัสดี! นี่คือข้อความ เว็บของเรานั้นสามารถดูผลงานต่างๆที่ร้านเรามี!</p>
+                         <p id="message">!ข้อความจะหายใน20วิ!</p>
+                     </div>
+                 
+                     <script>
+                         function showMessage() {
+                             const messageContainer = document.getElementById('message-container');
+                             messageContainer.classList.add('show');
+                             
+                             // ซ่อนข้อความหลังจาก 20 วินาที
+                             setTimeout(() => {
+                                 hideMessage();
+                             }, 20000);
+                         }
+                 
+                         function hideMessage() {
+                             const messageContainer = document.getElementById('message-container');
+                             messageContainer.classList.remove('show');
+                         }
+                     </script>
+                    
+                    
+                </div>
+
+                <div class="slideshow-container"></div>
+
+
+                
+                <div class="mySlides fade">
+                    
+                    <img id="myImg1" src="images/-_L.png" style="width:100%">
+                    
+                  </div>
+
+                  <div class="mySlides fade">
+                    
+                    <img id="myImg1" src="images/ลดลด.png" style="width:100%">
+                    
+                  </div>
+
+                  <div class="mySlides fade">
+                    
+                    <img id="myImg1" src="images/เวลาเปิด.png" style="width:100%">
+                    </div>
+                </div>
+                <br>
+
+                <div style="text-align:center">
+                    <span class="dot"></span> 
+                    <span class="dot"></span> 
+                    <span class="dot"></span> 
+                  </div>
+
+                  <script>
+                    let slideIndex = 0;
+                    showSlides();
+
+                    function showSlides() {
+                        let i;
+                        let slides = document.getElementsByClassName("mySlides");
+                        let dots = document.getElementsByClassName("dot");
+                        for (i = 0; i < slides.length; i++) {
+                            slides[i].style.display = "none";  
+                        }
+                        slideIndex++;
+                        if (slideIndex > slides.length) {slideIndex = 1}    
+                        for (i = 0; i < dots.length; i++) {
+                            dots[i].className = dots[i].className.replace(" active", "");
+                        }
+                        slides[slideIndex-1].style.display = "block";  
+                        dots[slideIndex-1].className += " active";
+                        setTimeout(showSlides, 3000); // Change image every 2 seconds
+                        }
+                        
+                        </script>
+
+
+                      <body style="background-image:url('images/หลัง2.png')"></body>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <section class="content">
+        <div class="conteainer">
+            <div class="content-title">
+                <h3><marquee direction="left"> ผลงานทุกผลงานลูกค้าสามารถดูได้เลย </marquee></h3>
+            </div>
+            <div class="content-con">
+                <div class="content-item">
+                    <img id="" src="images/ตัวอย่างแก้มตุ่ย03.png" alt="Ocean" width="250" height="250" style="position: relative;  left: 65px; ">
+                    
+                    <p></p>
+                    <a href="example2.html" class="">ดูรายการสินค้า</a>
+                </div>
+                <div class="content-item">
+                    <img id="" src="images/ตัวอย่างแก้มตุ่ย.png" alt="Ocean" width="250" height="250" style="position: relative;  left: 65px; ">
+                    
+                    <p></p>
+                    <a  class=""></a>
+                </div>
+                <div class="content-item">
+                    <img id="" src="images/ตัวอย่างแก้มตุ่ย03.png" alt="Ocean" width="250" height="250" style="position: relative;  left: 65px; ">
+                    
+                    <p></p>
+                    <a  class=""></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="footer-top">
+        <div class="container">
+            <div class="footer-top-con">
+                <div class="footer-top-item">
+                    <h4><u>แบบเนื้อหา</u></h4>
+                    <div class="footer-top-item-con">
+                        <div class="date">
+                            <a> ส่วนหัว </a>
+                        </div>
+                        <div class="info">
+                            <spen class="info-title"></spen>
+                            <spen class="info-fesc"></spen>
+
+                        </div>
+                    </div>
+                    <div class="footer-top-item-con">
+                        <div class="date">
+                            <a> แถบเมนูของรายการ</a>
+                        </div>
+                        <div class="info">
+                            <spen class="info-title"></spen>
+                            <spen class="info-fesc"></spen>
+                            
+                        </div>
+                    </div>
+                    <div class="footer-top-item-con">
+                        <div class="date">
+                            <a> บทความเดี่ยว(ส่วนท้าย)</a>
+                        </div>
+                        <div class="info">
+                            <spen class="info-title"></spen>
+                            <spen class="info-fesc"></spen>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-top-item">
+                    <h4><u>เมนูส่วนเสริม</u></h4>
+                    <p> แกเลอรีแนะนำ</p>
+                    <br>
+                    <p> ประกาศ</p>
+                    <br>
+                    <p> ล็อคอิน</p>
+                    <br>
+                        
+                    </p>
+                </div>
+                <div class="footer-top-item">
+                    <h4><u>บริการ</u></h4>
+                    <p> ผลงานแนะนำ</p>
+                    <br>
+                    <p> รูปภาพ</p>
+                    <br>
+                    <p> ราคา</p>
+                    <br>
+                        
+                    </p>
+                </div>
+                <div class="footer-top-item">
+                    <div class="discord">
+                    <h4><u>social link</u></h4>
+                    <br>      
+                        <a href="https://discord.gg/DVSGYggJ5e"><i class="fa fa-link" aria-hidden="true"></i> Discord </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-buttom">2024 | ร้านค้าออนไลน์ |  </div>
+</body>
+</html>

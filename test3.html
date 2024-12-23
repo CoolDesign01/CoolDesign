@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discord Webhook Messenger</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #2b5876, #4e4376);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #fff;
+    }
+
+    .main-container {
+      text-align: center;
+    }
+
+    /* ปุ่มเปิด modal */
+    .open-modal-btn {
+      padding: 15px 25px;
+      font-size: 18px;
+      background-color: #6c63ff;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .open-modal-btn:hover {
+      background-color: #4e4376;
+    }
+
+    /* Modal ป๊อปอัพ */
+    .modal {
+      display: none; /* ปิด modal เริ่มต้น */
+      position: fixed;
+      z-index: 1; /* อยู่เหนือเนื้อหาทั้งหมด */
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4); /* พื้นหลังโปร่งแสง */
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 15% auto;
+      padding: 30px;
+      border-radius: 10px;
+      width: 50%;
+      text-align: center;
+    }
+
+    .modal-close-btn {
+      background-color: #ff6b6b;
+      padding: 10px 20px;
+      border-radius: 10px;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .modal-close-btn:hover {
+      background-color: #ff4f4f;
+    }
+
+    h2 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    input, textarea, button {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s;
+    }
+
+    input, textarea {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 10px rgba(108, 99, 255, 0.5);
+      border-color: #6c63ff;
+    }
+
+    button {
+      background: linear-gradient(90deg, #6c63ff, #4e9dfd);
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #4e9dfd, #6c63ff);
+      transform: scale(1.05);
+    }
+
+    .message-log {
+      margin-top: 30px;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .message-box {
+      padding: 15px;
+      border-radius: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+      color: white;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* การเปลี่ยนสีข้อความที่พิมพ์ */
+    .textarea-color {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <button class="open-modal-btn" id="openModalBtn">เปิดฟอร์มส่งข้อความ</button>
+
+    <!-- Modal ฟอร์ม -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="modal-close-btn" id="closeModalBtn">&times; ปิด</span>
+        <h2>ส่งข้อความไปยัง Discord Webhook</h2>
+        <form id="webhookForm">
+          <input type="text" id="username" placeholder="ชื่อผู้ใช้" required>
+          <textarea id="message" class="textarea-color" placeholder="พิมพ์ข้อความที่นี่" rows="4" required></textarea>
+          <button type="submit">ส่งข้อความ</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ส่วนแสดงข้อความ -->
+    <div class="message-log" id="messageLog"></div>
+  </div>
+
+  <script>
+    const webhookUrl = "https://discordapp.com/api/webhooks/1319306563889922068/bWSh_EnFuOTDo0CDtBu1JCVt1V1T4_UhUSiNljRJpyQOzGeepDWu6Z50H7-9rxNcMC1H"; // แทนที่ด้วย URL Webhook ของคุณ
+
+    // ฟังก์ชันสำหรับการสุ่มสี
+    function getRandomColor() {
+      const colors = ["#FF6B6B", "#FF9B6B", "#6C63FF", "#50C878", "#34D399"];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    // การเปิด Modal
+    const modal = document.getElementById("myModal");
+    const openModalBtn = document.getElementById("openModalBtn");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+
+    openModalBtn.onclick = () => {
+      modal.style.display = "block";
+    };
+
+    closeModalBtn.onclick = () => {
+      modal.style.display = "none";
+    };
+
+    window.onclick = (event) => {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    };
+
+    // ฟังก์ชันการส่งข้อมูล
+    document.getElementById("webhookForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const username = document.getElementById("username").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      if (!webhookUrl) {
+        alert("กรุณาตั้งค่า Webhook URL ก่อน!");
+        return;
+      }
+
+      // Payload พร้อม Embed
+      const payload = {
+        embeds: [
+          {
+            title: `ข้อความจาก ${username}`,
+            description: message,
+            color: parseInt(getRandomColor().replace('#', ''), 16),
+            author: {
+              name: username,
+            },
+            timestamp: new Date().toISOString(),
+          },
+        ],
+      };
+
+      try {
+        const response = await fetch(webhookUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+
+        if (response.ok) {
+          addMessageToLog(username, message);
+          document.getElementById("webhookForm").reset();
+          modal.style.display = "none"; // ปิด modal เมื่อส่งข้อความเสร็จ
+        } else {
+          alert("เกิดข้อผิดพลาดในการส่งข้อความ");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("ไม่สามารถเชื่อมต่อกับ Webhook ได้");
+      }
+    });
+
+    function addMessageToLog(username, message) {
+      const messageLog = document.getElementById("messageLog");
+      const messageBox = document.createElement("div");
+      messageBox.className = "message-box";
+
+      messageBox.innerHTML = `
+        <p class="username">👤 ${username}</p>
+        <p class="content">${message}</p>
+      `;
+
+      messageLog.appendChild(messageBox);
+      messageLog.scrollTop = messageLog.scrollHeight;
+    }
+
+    // การเปลี่ยนสีข้อความที่พิมพ์
+    const messageTextArea = document.getElementById("message");
+
+    messageTextArea.addEventListener("input", (e) => {
+      const colors = ["#FF6B6B", "#FF9B6B", "#6C63FF", "#50C878", "#34D399"];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      e.target.style.color = randomColor;
+    });
+  </script>
+</body>
+</html>
