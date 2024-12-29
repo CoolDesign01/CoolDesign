@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cool Design</title>
-<link rel="stylesheet" href="mainstyle.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="icon" href="images/COOL_-_1.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cool Design</title>
+    <link rel="stylesheet" href="mainstyle.css">
+    <link rel="stylesheet" href="styles1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="images/COOL_-_1.png">
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
 
 <style> 
+
 body {
-  font-family: "Lato", sans-serif;
+    font-family: "Itim", serif; /* ใช้ฟอนต์ Charm */
   margin: 0;
   padding: 0;
 }
@@ -60,99 +63,14 @@ body {
 .content-item img:hover{
   transform: rotate(10deg);
 }
-/* ปุ่มหลัก */
-            button {
-            padding: 12px 24px;
-            font-size: 1.2em;
-            background-color: #007BFF;
-            color: #fff;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s, transform 0.2s;
-        }
-        
-        button {
-      background: linear-gradient(90deg, #fd944e, #ffbb63);
-      color: white;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease-in-out;
-    }
-
-    button:hover {
-      background: linear-gradient(90deg, #ffbb63, #fd944e);
-      transform: scale(1.05);
-    }
-
-        button:hover {
-            background-color: #0056b3;
-            transform: scale(1.05);
-        }
-
-        /* กล่องข้อความ */
-        #message-container {
-            position: relative;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1s ease, transform 1s ease;
-            font-size: 1em;
-            margin-top: 20px;
-            padding: 20px 30px;
-            background-color: #ffffff;
-            border: 1px solid #e0e0e0;
-            border-radius: 15px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-            max-width: 400px;
-            text-align: center;
-        }
-
-        #message-container.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        #close-btn {
-        position: absolute;
-        top: -5%;  /* ระยะห่างจากด้านล่าง */
-        left: 99%;  /* ระยะห่างจากด้านซ้าย */
-        transform: translate(-50%, -50%);
-        background-color: #ff4d4d;
-        color: #ffffff;
-        border: none;
-        border-radius: 50%;
-        width: 35px; /* ปรับขนาดปุ่ม */
-        height: 35px;
-        cursor: pointer;
-        font-size: 18px; /* ขนาดตัวอักษร */
-        display: flex;
-        align-items: center; /* จัดข้อความให้อยู่กลางแนวตั้ง */
-        justify-content: center; /* จัดข้อความให้อยู่กลางแนวนอน */
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-        transition: transform 0.3s, background-color 0.3s;
-    }
-
-        /* เอฟเฟกต์เมื่อโฮเวอร์ */
-        #close-btn:hover {
-            
-            background-color: #e60000;
-        }
-
-    
-
-        #message {
-            font-size: 1.2em;
-            color: #333;
-            margin: 0;
-        }
 
     </style>
 
 
 </head>
-<body> 
+<body style="background-image:url('images/หลัง2.png');">
+   
+   <!-- เมนูด้านข้าง -->
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="example.html">ChibiHead</a>
@@ -170,7 +88,7 @@ body {
           document.getElementById("mySidenav").style.width = "0";
         }
       </script>
-    </div>
+ <!-- เมนูหลัก -->
     <nav>
         <div class="container">
             <div class="nav-con">
@@ -180,12 +98,11 @@ body {
                     <li><span style="cursor:pointer" onclick="openNav()"><i class="fa fa-th-list"></i> สินค้า/บริการ </span></li>
                     <li><a href="Payment.html"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> การชำระเงิน</a></li>
                     <li><a href="Chibi.html"><i class="fa fa-info-circle" aria-hidden="true" ></i> ราคา</a></li>
-                    
                 </ul>
-                
             </div>
         </div>
     </nav>
+<!-- เพิ่มเติม/ประกาศ -->
     <section class="maincontent">
         <div class="container">
             <div class="maincontent-con">
@@ -193,54 +110,45 @@ body {
                     <h3>Announce <img src="images/promotion.png" alt="Ocean" width="40" height="40"></h3>
                     <p>ประกาศ !!! เว็บไวต์นี้มีเพื่อไว้โชว์ตัวอย่างของงานต่างๆ ที่มีในDiscordทางร้านได้ทำการนำมาไว้ในเว็บไซต์นี้</p>
                      <!-- ปุ่มแสดงข้อความ -->
-                     <button onclick="showMessage()">เพิ่มเติม!</button>
-
+                     <div class="more">
+                     <button class="more-button"onclick="showMessage()">เพิ่มเติม!</button>
+                        </div>
                      <div id="message-container">
                             <button id="close-btn" onclick="hideMessage()">×</button>
-                         <p id="message">สวัสดี! นี่คือข้อความ เว็บของเรานั้นสามารถดูผลงานต่างๆที่ร้านเรามี!</p>
-                         <p id="message">!ข้อความจะหายใน20วิ!</p>
+                         <p id="message">สวัสดี! นี่คือข้อความ เว็บของเราสามารถดูผลงานต่างๆที่ร้านเรามีได้เลย!</p>
+                         <p id="message">!ข้อความจะหายใน10วิ!</p>
                      </div>
-                 
-                     <script>
+                  <script>
                          function showMessage() {
                              const messageContainer = document.getElementById('message-container');
                              messageContainer.classList.add('show');
                              
-                             // ซ่อนข้อความหลังจาก 20 วินาที
+                             // ซ่อนข้อความหลังจาก 10 วินาที
                              setTimeout(() => {
                                  hideMessage();
-                             }, 20000);
+                             }, 10000);
                          }
-                 
-                         function hideMessage() {
+                  function hideMessage() {
                              const messageContainer = document.getElementById('message-container');
                              messageContainer.classList.remove('show');
                          }
                      </script>
-                    
-                    
-                </div>
 
+                </div>
+                <!-- สไลด์โชว์ -->
                 <div class="slideshow-container"></div>
 
-
-                
                 <div class="mySlides fade">
-                    
                     <img id="myImg1" src="images/-_L.png" style="width:100%">
-                    
-                  </div>
+                </div>
 
-                  <div class="mySlides fade">
-                    
+                <div class="mySlides fade">
                     <img id="myImg1" src="images/ลดลด.png" style="width:100%">
-                    
-                  </div>
+                </div>
 
-                  <div class="mySlides fade">
-                    
+                <div class="mySlides fade">
                     <img id="myImg1" src="images/เวลาเปิด.png" style="width:100%">
-                    </div>
+                </div>
                 </div>
                 <br>
 
@@ -248,9 +156,9 @@ body {
                     <span class="dot"></span> 
                     <span class="dot"></span> 
                     <span class="dot"></span> 
-                  </div>
+                </div>
 
-                  <script>
+                <script>
                     let slideIndex = 0;
                     showSlides();
 
@@ -268,18 +176,17 @@ body {
                         }
                         slides[slideIndex-1].style.display = "block";  
                         dots[slideIndex-1].className += " active";
-                        setTimeout(showSlides, 3000); // Change image every 2 seconds
-                        }
-                        
-                        </script>
+                        setTimeout(showSlides, 3000); // Change image every 3 seconds
+                    }
+                </script>
 
-
-                      <body style="background-image:url('images/หลัง2.png')"></body>
-                </div>
+                
             </div>
         </div>
-
     </section>
+
+      <!-- ผลงาน -->
+
     <section class="content">
         <div class="conteainer">
             <div class="content-title">
@@ -288,25 +195,109 @@ body {
             <div class="content-con">
                 <div class="content-item">
                     <img id="" src="images/ตัวอย่างแก้มตุ่ย03.png" alt="Ocean" width="250" height="250" style="position: relative;  left: 65px; ">
-                    
                     <p></p>
                     <a href="example2.html" class="">ดูรายการสินค้า</a>
                 </div>
                 <div class="content-item">
                     <img id="" src="images/ตัวอย่างแก้มตุ่ย.png" alt="Ocean" width="250" height="250" style="position: relative;  left: 65px; ">
-                    
                     <p></p>
-                    <a  class=""></a>
                 </div>
                 <div class="content-item">
                     <img id="" src="images/ตัวอย่างแก้มตุ่ย03.png" alt="Ocean" width="250" height="250" style="position: relative;  left: 65px; ">
-                    
                     <p></p>
-                    <a  class=""></a>
                 </div>
             </div>
         </div>
     </section>
+ <!-- กล่องจดหมาย -->
+ <button class="mailboxx-btn" onclick="toggleMailbox()">📩 กล่องจดหมาย</button>
+
+ <div class="container1" id="mailboxContainer">
+     <div class="header">กล่องจดหมาย</div>
+     <div class="list" id="mailbox">
+         <!-- ข้อมูลของกล่องจดหมายจะถูกแสดงที่นี่ -->
+     </div>
+ </div>
+
+ <script>
+     const mailbox = [
+         {
+             id: 42,
+             type: "กิจกรรม",
+             title: "กิจกรรมรับรางวัลฉลองเปิดร้าน",
+             details: "เริ่ม: ตั้งแต่วันนี้ ถึง 5 มกราคม",
+             reward: "https://via.placeholder.com/40"
+         },
+         {
+             id: 1,
+             type: "ประกาศ",
+             title: "ปิดปรับปรุงระบบ",
+             details: "วันที่: 30 ธันวาคม เวลา 00:00 - 06:00",
+             reward: null
+         },
+         {
+             id: 43,
+             type: "กิจกรรม",
+             title: "เติมเงินรับไอเทมพิเศษ",
+             details: "รายละเอียดกิจกรรมเติมเงิน",
+             reward: "https://via.placeholder.com/40"
+         },
+         
+     ];
+
+     function loadMailbox() {
+         const mailboxDiv = document.getElementById("mailbox");
+         mailboxDiv.innerHTML = mailbox.map(item => `
+             <div class="list-item" id="item-${item.id}">
+                 <div>
+                     <h4>${item.type}: ${item.title}</h4>
+                     <button class="btn" onclick="toggleDetails(${item.id})">รายละเอียด</button>
+                 </div>
+                 ${item.reward ? `<img src="${item.reward}" alt="Reward" class="reward-image">` : ""}
+                 ${item.reward ? `
+                     <button class="btn" id="claim-btn-${item.id}" 
+                     onclick="claimReward(${item.id})" 
+                     ${localStorage.getItem(`claimed-${item.id}`) ? "disabled" : ""}>
+                     ${localStorage.getItem(`claimed-${item.id}`) ? "รับรางวัลแล้ว" : "รับรางวัล"}
+                     </button>` : ""}
+                 <div class="details" id="details-${item.id}">
+                     <p>${item.details}</p>
+                 </div>
+             </div>
+         `).join('');
+     }
+
+     function toggleDetails(id) {
+         const detailsDiv = document.getElementById(`details-${id}`);
+         detailsDiv.style.display = detailsDiv.style.display === "block" ? "none" : "block";
+     }
+
+     function claimReward(id) {
+         if (!localStorage.getItem(`claimed-${id}`)) {
+             const item = mailbox.find(i => i.id === id);
+             if (item) {
+                 addToBag(item);
+                 localStorage.setItem(`claimed-${id}`, true);
+                 const btn = document.getElementById(`claim-btn-${id}`);
+                 btn.textContent = "รับรางวัลแล้ว";
+                 btn.disabled = true;
+             }
+         }
+     }
+
+     function addToBag(item) {
+         const bagItems = JSON.parse(localStorage.getItem('bagItems')) || [];
+         bagItems.push(item);
+         localStorage.setItem('bagItems', JSON.stringify(bagItems));
+     }
+
+     function toggleMailbox() {
+         const container = document.getElementById("mailboxContainer");
+         container.style.display = container.style.display === "block" ? "none" : "block";
+     }
+
+     window.onload = loadMailbox;
+ </script>
 
     <div class="footer-top">
         <div class="container">
@@ -320,7 +311,6 @@ body {
                         <div class="info">
                             <spen class="info-title"></spen>
                             <spen class="info-fesc"></spen>
-
                         </div>
                     </div>
                     <div class="footer-top-item-con">
@@ -330,7 +320,6 @@ body {
                         <div class="info">
                             <spen class="info-title"></spen>
                             <spen class="info-fesc"></spen>
-                            
                         </div>
                     </div>
                     <div class="footer-top-item-con">
@@ -340,7 +329,6 @@ body {
                         <div class="info">
                             <spen class="info-title"></spen>
                             <spen class="info-fesc"></spen>
-                            
                         </div>
                     </div>
                 </div>
@@ -352,8 +340,6 @@ body {
                     <br>
                     <p> ล็อคอิน</p>
                     <br>
-                        
-                    </p>
                 </div>
                 <div class="footer-top-item">
                     <h4><u>บริการ</u></h4>
@@ -363,19 +349,21 @@ body {
                     <br>
                     <p> ราคา</p>
                     <br>
-                        
-                    </p>
                 </div>
                 <div class="footer-top-item">
                     <div class="discord">
-                    <h4><u>social link</u></h4>
-                    <br>      
+                        <h4><u>social link</u></h4>
+                        <br>      
                         <a href="https://discord.gg/DVSGYggJ5e"><i class="fa fa-link" aria-hidden="true"></i> Discord </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="footer-buttom">2024 | ร้านค้าออนไลน์ |  </div>
+    
+    
+      
+
+<div class="footer-buttom">2024 | ร้านค้าออนไลน์ |  </div>
 </body>
 </html>

@@ -10,6 +10,8 @@
 }
 
 
+
+
 nav{
   padding: 1rem;
   
@@ -613,4 +615,297 @@ nav span:hover {
  border-radius: 7px;
  text-decoration: none;
 }
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+.mailbox {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  max-height: 400px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  display: none;
+  z-index: 1000;
+}
+
+.mailbox-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+}
+
+.mailbox-header h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.mailbox-body {
+  padding: 10px 15px;
+}
+
+.mail {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.mail h3 {
+  margin: 0 0 5px;
+  font-size: 16px;
+  color: #333;
+}
+
+.mail img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+.mail-actions {
+  margin-top: 10px;
+}
+
+.mail-actions button {
+  margin-right: 5px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.mail-actions button:hover {
+  background-color: #0056b3;
+}
+
+.mail-actions button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.toggle-button {
+  font-size: 12px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #ff991499;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.X .close-button{
+  background-color: #ff4c4c;
+}
+.X .close-button:hover {
+  background-color: #fa7777;
+  transform: scale(1.05);
+}
+
+.xbox .toggle-button:hover{
+  background-color: #a05c0399;
+}
+
+
+
+/* ปุ่มหลัก */
+button {
+  padding: 12px 24px;
+  font-size: 1.2em;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button {
+background-color: #ffa43d;
+color: white;
+font-weight: bold;
+border: none;
+cursor: pointer;
+transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+
+transform: scale(1.05);
+}
+
+.more .more-button:hover {
+  background-color: #2600ff;
+  transform: scale(1.05);
+}
+
+/* กล่องข้อความ */
+#message-container {
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+  font-size: 1em;
+  margin-top: 20px;
+  padding: 20px 30px;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  text-align: center;
+}
+
+#message-container.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#close-btn {
+position: absolute;
+top: -5%;  /* ระยะห่างจากด้านล่าง */
+left: 99%;  /* ระยะห่างจากด้านซ้าย */
+transform: translate(-50%, -50%);
+background-color: #ff4d4d;
+color: #ffffff;
+border: none;
+border-radius: 50%;
+width: 35px; /* ปรับขนาดปุ่ม */
+height: 35px;
+cursor: pointer;
+font-size: 18px; /* ขนาดตัวอักษร */
+display: flex;
+align-items: center; /* จัดข้อความให้อยู่กลางแนวตั้ง */
+justify-content: center; /* จัดข้อความให้อยู่กลางแนวนอน */
+box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+transition: transform 0.3s, background-color 0.3s;
+}
+
+/* เอฟเฟกต์เมื่อโฮเวอร์ */
+#close-btn:hover {
+  
+  background-color: #e60000;
+}
+
+
+
+#message {
+  font-size: 1.2em;
+  color: #333;
+  margin: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.mailbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none; /* ซ่อน overlay ไว้ก่อน */
+  z-index: 1000;
+}
+
+.mailbox {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 400px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mailbox-header {
+  background-color: #007bff;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.mailbox-body {
+  padding: 15px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.mail {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.mail img {
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.mail-actions button {
+  padding: 8px 12px;
+  margin-top: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.mail-actions button:hover {
+  background-color: #0056b3;
+}
+
+.mail-actions button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.toggle-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 

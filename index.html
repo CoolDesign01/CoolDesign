@@ -5,6 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login & Register</title>
     <style>
+
+.notification {
+        margin-top: 15px;
+        padding: 10px;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        font-size: 0.9em;
+        text-align: center;
+    }
+
+    .notification.error {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+    }
+
+    .notification.success {
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+    }
+    
        /* ตั้งค่าเริ่มต้น */
        body {
             font-family: Arial, sans-serif;
@@ -158,38 +180,55 @@
         }
 
         // ฟังก์ชันสำหรับการสมัครสมาชิก
-        document.getElementById('registerForm').addEventListener('submit', function (e) {
-            e.preventDefault(); // หยุดการส่งฟอร์ม
-            const username = document.getElementById('register-username').value;
-            const password = document.getElementById('register-password').value;
+document.getElementById('registerForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const username = document.getElementById('register-username').value;
+    const password = document.getElementById('register-password').value;
+    const registerNotification = document.getElementById('register-notification');
 
-            // ตรวจสอบว่ามีชื่อผู้ใช้อยู่แล้วใน Local Storage หรือไม่
-            const users = JSON.parse(localStorage.getItem('users')) || {};
-            if (users[username]) {
-                document.getElementById('register-error').style.display = 'block';
-            } else {
-                users[username] = password; // บันทึกข้อมูลผู้ใช้
-                localStorage.setItem('users', JSON.stringify(users)); // เก็บข้อมูลลง Local Storage
-                alert('การลงทะเบียนสำเร็จ! ตอนนี้คุณสามารถเข้าสู่ระบบ.');
-                switchToLogin(); // เปลี่ยนไปหน้าล็อกอิน
-            }
-        });
+    // ซ่อนข้อความแจ้งเตือนก่อน
+    registerNotification.style.display = 'none';
 
-        // ฟังก์ชันสำหรับการล็อกอิน
-        document.getElementById('loginForm').addEventListener('submit', function (e) {
-            e.preventDefault(); // หยุดการส่งฟอร์ม
-            const username = document.getElementById('login-username').value;
-            const password = document.getElementById('login-password').value;
+    const users = JSON.parse(localStorage.getItem('users')) || {};
+    if (users[username]) {
+        registerNotification.innerHTML = 'ชื่อผู้ใช้นี้มีอยู่แล้วในระบบ กรุณาใช้ชื่อผู้ใช้อื่น';
+        registerNotification.className = 'notification error';
+        registerNotification.style.display = 'block';
+    } else {
+        users[username] = password;
+        localStorage.setItem('users', JSON.stringify(users));
+        registerNotification.innerHTML = 'การลงทะเบียนสำเร็จ! คุณสามารถเข้าสู่ระบบได้';
+        registerNotification.className = 'notification success';
+        registerNotification.style.display = 'block';
+    }
+});
 
-            // ดึงข้อมูลผู้ใช้จาก Local Storage
-            const users = JSON.parse(localStorage.getItem('users')) || {};
-            if (users[username] && users[username] === password) {
-                alert('เข้าสู่ระบบสำเร็จ! กำลังเปลี่ยนเส้นทางไปยังหน้าแรก...');
-                window.location.href = "home.html"; // เปลี่ยนหน้าเมื่อสำเร็จ
-            } else {
-                document.getElementById('login-error').style.display = 'block';
-            }
-        });
+// ฟังก์ชันสำหรับการล็อกอิน
+document.getElementById('loginForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const username = document.getElementById('login-username').value;
+    const password = document.getElementById('login-password').value;
+    const loginNotification = document.getElementById('login-notification');
+
+    // ซ่อนข้อความแจ้งเตือนก่อน
+    loginNotification.style.display = 'none';
+
+    const users = JSON.parse(localStorage.getItem('users')) || {};
+    if (users[username] && users[username] === password) {
+        loginNotification.innerHTML = 'เข้าสู่ระบบสำเร็จ! กำลังเปลี่ยนเส้นทาง...';
+        loginNotification.className = 'notification success';
+        loginNotification.style.display = 'block';
+        setTimeout(() => {
+            window.location.href = "home.html"; // เปลี่ยนหน้า
+        }, 2000);
+    } else {
+        loginNotification.innerHTML = 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง กรุณาลองอีกครั้ง';
+        loginNotification.className = 'notification error';
+        loginNotification.style.display = 'block';
+    }
+});
+
+
     </script>
 </body>
 </html>

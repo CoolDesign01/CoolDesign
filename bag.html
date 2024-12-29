@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+  <title>กระเป๋าของฉัน</title>
+  <style>
+    body {
+      font-family: "Itim", serif; /* ใช้ฟอนต์ Charm */ 
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #ffffff, #6db9ff);
+    }
+
+    .header {
+      width: 100%;
+      background-color: #71b3ff;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.8em;
+      position: relative;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #ffffff90;
+      color: #5c6bc0;
+      border: 1px solid #71b3ff;
+      padding: 8px 15px;
+      font-size: 1em;
+      border-radius: 20px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #f0f0f0;
+      transform: scale(1.05);
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      margin-top: 30px;
+    }
+
+    .item {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      text-align: center;
+      padding: 15px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      width: 150px;
+      height: 220px;
+      transition: all 0.3s ease;
+    }
+
+    .item img {
+      width: 70px;
+      height: 70px;
+      margin-bottom: 15px;
+      background-color: #ddd;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .item img:hover {
+      transform: scale(1.1);
+    }
+
+    .item p {
+      font-size: 1em;
+      margin: 5px 0;
+      color: #333;
+      font-weight: 600;
+    }
+
+    .button-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .item button {
+      background-color: #60ca60;
+      color: white;
+      border: none;
+      padding: 10px 0;
+      font-size: 1em;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .item button:hover {
+      background-color: #0a740a;
+      transform: scale(1.05);
+    }
+
+    /* รายละเอียดที่ค่อยๆ โชว์ */
+    .details {
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+      padding: 15px;
+      background: #ffffff;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      margin-top: 10px;
+      font-size: 1em;
+      color: #333;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: none;
+    }
+
+    .details.show {
+      opacity: 1;
+      transform: translateY(0);
+      display: block;
+    }
+
+    .empty {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-size: 1.8em;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <a href="homl1.html" class="back-button"> <i class="fa fa-home" aria-hidden="true"></i>หน้าหลัก</a>
+    กระเป๋าของฉัน 🎒
+  </div>
+
+  <div class="container" id="bagContainer">
+    <!-- ไอเทมในกระเป๋าจะถูกเพิ่มที่นี่ -->
+  </div>
+
+  <script>
+    function toggleDetails(id, event) {
+      event.preventDefault(); 
+      const detailsDiv = document.getElementById(`details-${id}`);
+      const allDetails = document.querySelectorAll('.details');
+      
+      // ปิดรายละเอียดทั้งหมด
+      allDetails.forEach(detail => {
+        if (detail !== detailsDiv) {
+          detail.classList.remove('show');
+          detail.style.display = 'none';
+        }
+      });
+      
+      // เปิด/ปิด รายละเอียดไอเทม
+      detailsDiv.classList.toggle('show');
+      if (detailsDiv.classList.contains('show')) {
+        detailsDiv.style.display = 'block';
+      } else {
+        detailsDiv.style.display = 'none';
+      }
+    }
+
+    function removeItem(id) {
+      let bagItems = JSON.parse(localStorage.getItem('bagItems')) || [];
+      bagItems = bagItems.filter(item => item.id !== id);
+      localStorage.setItem('bagItems', JSON.stringify(bagItems));
+      loadBag(); 
+    }
+
+    function loadBag() {
+      const bagItems = JSON.parse(localStorage.getItem('bagItems')) || [];
+      const container = document.getElementById('bagContainer');
+      container.innerHTML = '';
+
+      if (bagItems.length === 0) {
+        container.innerHTML = `<div class="empty">กระเป๋าว่างเปล่า</div>`;
+        return;
+      }
+
+      const sortedItems = bagItems.sort((a, b) => b.timestamp - a.timestamp);
+
+      sortedItems.forEach(item => {
+        const itemDiv = document.createElement('div');
+        itemDiv.classList.add('item');
+        itemDiv.innerHTML = `
+          <img src="${item.reward}" alt="${item.title}">
+          <p>${item.title}</p>
+          <div class="button-container">
+            <button onclick="toggleDetails(${item.id}, event)">รายละเอียด</button>
+            <button onclick="removeItem(${item.id})">ลบ</button>
+          </div>
+          <div class="details" id="details-${item.id}">
+            <p>${item.details}</p>
+          </div>
+        `;
+        container.appendChild(itemDiv);
+      });
+    }
+
+    window.onload = loadBag;
+  </script>
+
+</body>
+</html>
