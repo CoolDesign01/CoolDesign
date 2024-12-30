@@ -6,6 +6,8 @@
     <title>Cool Design</title>
     <link rel="stylesheet" href="mainstyle.css">
     <link rel="stylesheet" href="styles1.css">
+    <link rel="stylesheet" href="styles2.css">
+    <link rel="stylesheet" href="time.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="images/COOL_-_1.png">
     <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
@@ -78,6 +80,7 @@ body {
         <a href="example3.html">ChibiHalfbody</a>
         <a href="example4.html">ChibiCarry</a>
         <a href="example5.html">ChibiChristmas</a>
+        <a href="bag.html"> กระเป๋าเก็บของ</a>
       </div>
       <script>
         function openNav() {
@@ -222,27 +225,33 @@ body {
  <script>
      const mailbox = [
          {
-             id: 42,
+             id: 24,
              type: "กิจกรรม",
              title: "กิจกรรมรับรางวัลฉลองเปิดร้าน",
              details: "เริ่ม: ตั้งแต่วันนี้ ถึง 5 มกราคม",
              reward: "https://via.placeholder.com/40"
          },
          {
-             id: 1,
+             id: 9,
              type: "ประกาศ",
              title: "ปิดปรับปรุงระบบ",
              details: "วันที่: 30 ธันวาคม เวลา 00:00 - 06:00",
              reward: null
          },
          {
-             id: 43,
+             id: 23,
              type: "กิจกรรม",
              title: "เติมเงินรับไอเทมพิเศษ",
              details: "รายละเอียดกิจกรรมเติมเงิน",
              reward: "https://via.placeholder.com/40"
          },
-         
+         {
+             id: 21,
+             type: "กิจกรรม3",
+             title: "เติมเงินรับไอเทมพิเศษ",
+             details: "รายละเอียดกิจกรรมเติมเงิน",
+             reward: "https://via.placeholder.com/40"
+         }
      ];
 
      function loadMailbox() {
@@ -298,6 +307,134 @@ body {
 
      window.onload = loadMailbox;
  </script>
+
+<!-- นาฬิกาแบบไอโฟน -->
+<div class="iphone-clock-container" id="iphone-clock-container">
+    <div class="iphone-clock-content">
+        <div class="time" id="iphone-time"></div>
+        <div class="date" id="iphone-date"></div>
+        <div class="footer">
+            <span id="footer-time"></span>
+        </div>
+    </div>
+    
+    <div class="resize-buttons" id="resize-buttons">
+        <button class="resize-button" id="decrease-size">-</button>
+        <button class="resize-button" id="increase-size">+</button>
+    </div>
+
+    <!-- ปุ่มเปิด/ปิดการปรับขนาด -->
+    <button id="toggle-size-buttons">+</button>
+</div>
+
+<script>
+    let fontSize = 24;
+
+    function updateClock() {
+        const now = new Date().toLocaleString("en-US", { timeZone: "Asia/Bangkok" });
+        const date = new Date(now);
+
+        const hours = date.getHours();
+        const minutes = date.getMinutes();
+        const seconds = date.getSeconds();
+        const day = date.getDate();
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear();
+
+        const iphoneTimeStr = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+        document.getElementById('iphone-time').textContent = iphoneTimeStr;
+        document.getElementById('iphone-date').textContent = `วันที่: ${String(day).padStart(2, '0')}/${String(month).padStart(2, '0')}/${year}`;
+
+        const footerTimeStr = `อัปเดตล่าสุดเวลา: ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        document.getElementById('footer-time').textContent = footerTimeStr;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    function resizeFontSize(increase) {
+        fontSize += increase ? 2 : -2;
+        if (fontSize < 12) fontSize = 12;
+        if (fontSize > 100) fontSize = 100;
+
+        document.getElementById('iphone-time').style.fontSize = fontSize + 'px';
+        document.getElementById('iphone-date').style.fontSize = fontSize * 0.6 + 'px';
+        document.getElementById('footer-time').style.fontSize = fontSize * 0.4 + 'px';
+
+        localStorage.setItem('fontSize', fontSize);
+    }
+
+    document.getElementById('increase-size').addEventListener('click', function() {
+        resizeFontSize(true);
+    });
+
+    document.getElementById('decrease-size').addEventListener('click', function() {
+        resizeFontSize(false);
+    });
+
+    window.addEventListener('load', () => {
+        const savedFontSize = localStorage.getItem('fontSize');
+        if (savedFontSize) {
+            fontSize = parseInt(savedFontSize);
+            document.getElementById('iphone-time').style.fontSize = fontSize + 'px';
+            document.getElementById('iphone-date').style.fontSize = fontSize * 0.6 + 'px';
+            document.getElementById('footer-time').style.fontSize = fontSize * 0.4 + 'px';
+        }
+    });
+
+    let isDragging = false;
+    let offsetX = 0;
+    let offsetY = 0;
+
+    const iphoneClockContainer = document.getElementById('iphone-clock-container');
+
+    iphoneClockContainer.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        offsetX = e.clientX - iphoneClockContainer.offsetLeft;
+        offsetY = e.clientY - iphoneClockContainer.offsetTop;
+        iphoneClockContainer.style.cursor = 'move';
+    });
+
+    document.addEventListener('mousemove', function(e) {
+        if (isDragging) {
+            iphoneClockContainer.style.left = (e.clientX - offsetX) + 'px';
+            iphoneClockContainer.style.top = (e.clientY - offsetY) + 'px';
+        }
+    });
+
+    document.addEventListener('mouseup', function() {
+        isDragging = false;
+        iphoneClockContainer.style.cursor = 'move';
+        localStorage.setItem('clockPosition', JSON.stringify({
+            left: iphoneClockContainer.style.left,
+            top: iphoneClockContainer.style.top
+        }));
+    });
+
+    window.addEventListener('load', () => {
+        const savedPosition = JSON.parse(localStorage.getItem('clockPosition'));
+        if (savedPosition) {
+            iphoneClockContainer.style.left = savedPosition.left;
+            iphoneClockContainer.style.top = savedPosition.top;
+        }
+    });
+
+    // ปุ่มเปิด/ปิดแสดงปุ่มขนาด
+    document.getElementById('toggle-size-buttons').addEventListener('click', function() {
+        const resizeButtons = document.getElementById('resize-buttons');
+        // สลับการแสดง/ซ่อนของปุ่มขนาด
+        if (resizeButtons.style.display === 'none') {
+            resizeButtons.style.display = 'flex';
+            this.textContent = '-';  // เปลี่ยนเป็นปุ่มปิด
+        } else {
+            resizeButtons.style.display = 'none';
+            this.textContent = '+';  // เปลี่ยนเป็นปุ่มเปิด
+        }
+    });
+    
+</script>
+<div id="notification-container"></div>
+<script src="warn.js"></script>
 
     <div class="footer-top">
         <div class="container">

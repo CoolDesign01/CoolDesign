@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>นาฬิกาเวลาแบบไอโฟน</title>
+    <style>
+        .iphone-clock-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 9999;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            font-size: 24px;
+            cursor: move;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center; /* ให้ทุกอย่างอยู่ในแถวเดียวกัน */
+            overflow: hidden;
+        }
+
+        .iphone-clock-content {
+            text-align: center;
+        }
+
+        .resize-buttons {
+            display: none; /* ซ่อนปุ่ม A+ และ A- เริ่มต้น */
+            flex-direction: column; /* เรียงปุ่มในแนวตั้ง */
+            justify-content: center;
+            margin-left: 10px;
+        }
+
+        .resize-button, #toggle-size-buttons {
+            padding: 5px 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+
+        .resize-button:focus {
+            outline: none;
+        }
+
+        #toggle-size-buttons {
+            background-color: #ff5722;
+            font-size: 16px;
+            padding: 5px 8px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        /* ไอคอน + และ - สำหรับ A+ และ A- */
+        .resize-button {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+        }
+
+        /* เปลี่ยนสีของนาฬิกา */
+        .time {
+            font-size: 60px;
+            font-weight: 600;
+            color: #ff5722; /* สีของนาฬิกา */
+            letter-spacing: 2px;
+        }
+
+        /* เปลี่ยนสีของวันที่ */
+        .date {
+            font-size: 20px;
+            font-weight: 400;
+            color: #2196f3; /* สีของวันที่ */
+            margin-top: 10px;
+        }
+
+        /* เปลี่ยนสีของฟุตเตอร์ */
+        .footer {
+            font-size: 14px;
+            color: #9e9e9e; /* สีของฟุตเตอร์ */
+            margin-top: 10px;
+        }
+        /* คำเตือน */
+        .alert-box {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ff9800;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            z-index: 10000;
+            font-size: 16px;
+            display: none;
+            cursor: pointer;
+            opacity: 0; /* ซ่อนคำเตือนตอนแรก */
+            transition: opacity 1s ease-in-out; /* ทำให้ค่อยๆ โชว์และค่อยๆ จาง */
+        }
+
+        .alert-box.show {
+            display: block;
+            opacity: 1; /* แสดงคำเตือน */
+        }
+
+        .alert-box p {
+            margin: 0;
+        }
+
+    </style>
+</head>
+<body>
+      <!-- คำเตือนที่จะแสดงเมื่อผู้ใช้เข้ามาครั้งแรก -->
+      <div class="alert-box" id="alert-box">
+        <p>คุณสามารถขยับ/ย้าย/ปรับขนาดของเวลาได้นะครับ</p>
+    </div>
+
+    <div class="iphone-clock-container" id="iphone-clock-container">
+        <div class="iphone-clock-content">
+            <div class="time" id="iphone-time"></div>
+            <div class="date" id="iphone-date"></div>
+            <div class="footer">
+                <span id="footer-time"></span>
+            </div>
+        </div>
+        
+        <div class="resize-buttons" id="resize-buttons">
+            <button class="resize-button" id="decrease-size">-</button>
+            <button class="resize-button" id="increase-size">+</button>
+        </div>
+
+        <!-- ปุ่มเปิด/ปิดการปรับขนาด -->
+        <button id="toggle-size-buttons">+</button>
+    </div>
+
+    <script>
+        let fontSize = 24;
+
+        function updateClock() {
+            const now = new Date().toLocaleString("en-US", { timeZone: "Asia/Bangkok" });
+            const date = new Date(now);
+
+            const hours = date.getHours();
+            const minutes = date.getMinutes();
+            const seconds = date.getSeconds();
+            const day = date.getDate();
+            const month = date.getMonth() + 1;
+            const year = date.getFullYear();
+
+            const iphoneTimeStr = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+            document.getElementById('iphone-time').textContent = iphoneTimeStr;
+            document.getElementById('iphone-date').textContent = `วันที่: ${String(day).padStart(2, '0')}/${String(month).padStart(2, '0')}/${year}`;
+
+            const footerTimeStr = `อัปเดตล่าสุดเวลา: ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            document.getElementById('footer-time').textContent = footerTimeStr;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        function resizeFontSize(increase) {
+            fontSize += increase ? 2 : -2;
+            if (fontSize < 12) fontSize = 12;
+            if (fontSize > 100) fontSize = 100;
+
+            document.getElementById('iphone-time').style.fontSize = fontSize + 'px';
+            document.getElementById('iphone-date').style.fontSize = fontSize * 0.6 + 'px';
+            document.getElementById('footer-time').style.fontSize = fontSize * 0.4 + 'px';
+
+            localStorage.setItem('fontSize', fontSize);
+        }
+
+        document.getElementById('increase-size').addEventListener('click', function() {
+            resizeFontSize(true);
+        });
+
+        document.getElementById('decrease-size').addEventListener('click', function() {
+            resizeFontSize(false);
+        });
+
+        window.addEventListener('load', () => {
+            const savedFontSize = localStorage.getItem('fontSize');
+            if (savedFontSize) {
+                fontSize = parseInt(savedFontSize);
+                document.getElementById('iphone-time').style.fontSize = fontSize + 'px';
+                document.getElementById('iphone-date').style.fontSize = fontSize * 0.6 + 'px';
+                document.getElementById('footer-time').style.fontSize = fontSize * 0.4 + 'px';
+            }
+        });
+
+        let isDragging = false;
+        let offsetX = 0;
+        let offsetY = 0;
+
+        const iphoneClockContainer = document.getElementById('iphone-clock-container');
+
+        iphoneClockContainer.addEventListener('mousedown', function(e) {
+            isDragging = true;
+            offsetX = e.clientX - iphoneClockContainer.offsetLeft;
+            offsetY = e.clientY - iphoneClockContainer.offsetTop;
+            iphoneClockContainer.style.cursor = 'move';
+        });
+
+        document.addEventListener('mousemove', function(e) {
+            if (isDragging) {
+                iphoneClockContainer.style.left = (e.clientX - offsetX) + 'px';
+                iphoneClockContainer.style.top = (e.clientY - offsetY) + 'px';
+            }
+        });
+
+        document.addEventListener('mouseup', function() {
+            isDragging = false;
+            iphoneClockContainer.style.cursor = 'move';
+            localStorage.setItem('clockPosition', JSON.stringify({
+                left: iphoneClockContainer.style.left,
+                top: iphoneClockContainer.style.top
+            }));
+        });
+
+        window.addEventListener('load', () => {
+            const savedPosition = JSON.parse(localStorage.getItem('clockPosition'));
+            if (savedPosition) {
+                iphoneClockContainer.style.left = savedPosition.left;
+                iphoneClockContainer.style.top = savedPosition.top;
+            }
+        });
+
+        // ปุ่มเปิด/ปิดแสดงปุ่มขนาด
+        document.getElementById('toggle-size-buttons').addEventListener('click', function() {
+            const resizeButtons = document.getElementById('resize-buttons');
+            // สลับการแสดง/ซ่อนของปุ่มขนาด
+            if (resizeButtons.style.display === 'none') {
+                resizeButtons.style.display = 'flex';
+                this.textContent = '-';  // เปลี่ยนเป็นปุ่มปิด
+            } else {
+                resizeButtons.style.display = 'none';
+                this.textContent = '+';  // เปลี่ยนเป็นปุ่มเปิด
+            }
+        });
+        
+         // แสดงคำเตือนและทำให้มันค่อยๆ โชว์ขึ้นและจางหายไป
+         function showAlert() {
+            const alertBox = document.getElementById('alert-box');
+            if (!localStorage.getItem('alertClosed')) {
+                alertBox.classList.add('show');
+                setTimeout(() => {
+                    alertBox.classList.remove('show');
+                }, 5000); // ค่อยๆ จางหายไปหลังจาก 5 วินาที
+            }
+        }
+
+        // เก็บข้อมูลว่าผู้ใช้ปิดคำเตือน
+        document.getElementById('alert-box').addEventListener('click', function() {
+            localStorage.setItem('alertClosed', 'true');
+            this.classList.remove('show');
+        });
+
+        // ฟังก์ชั่นสำหรับแสดงคำเตือนทุกๆ 1 นาที
+        setInterval(showAlert, 10000); // ทุกๆ 1 นาที
+        showAlert(); // เรียกครั้งแรกเมื่อโหลดหน้าเว็บ
+
+    </script>
+    
+</body>
+</html>

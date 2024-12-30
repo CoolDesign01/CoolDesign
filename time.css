@@ -1,0 +1,90 @@
+.iphone-clock-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-family: "Itim", serif; /* ใช้ฟอนต์ Charm */
+    font-size: 24px;
+    cursor: move;
+    /*background-color: rgba(255, 255, 255, 0.8);  สีกล่องพื้นหลังนาฬิกา */ 
+    display: flex;
+    align-items: center; /* ให้ทุกอย่างอยู่ในแถวเดียวกัน */
+    overflow: hidden;
+}
+
+.iphone-clock-content {
+    text-align: center;
+}
+
+.resize-buttons {
+    display: none; /* ซ่อนปุ่ม A+ และ A- เริ่มต้น */
+    flex-direction: column; /* เรียงปุ่มในแนวตั้ง */
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.resize-button, #toggle-size-buttons {
+    padding: 5px 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.resize-button:focus {
+    outline: none;
+}
+
+#toggle-size-buttons {
+    background-color: #ff5722;
+    font-size: 16px;
+    padding: 5px 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+/* ไอคอน + และ - สำหรับ A+ และ A- */
+.resize-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 18px;
+}
+
+/* เปลี่ยนสีของนาฬิกา */
+.time {
+    font-size: 60px;
+    font-weight: 600;
+    color: #ff5722; /* สีของนาฬิกา */
+    letter-spacing: 2px;
+}
+
+/* แก้ไขสไตล์ของวันที่ในนาฬิกา */
+.iphone-clock-container .date {
+    font-size: 20px;
+    font-weight: 400;
+    color: #2196f3; /* สีของวันที่ */
+    margin-top: 10px;
+}
+
+/* เปลี่ยนสีของฟุตเตอร์ */
+.footer {
+    font-size: 14px;
+    color: #000000; /* สีของฟุตเตอร์ */
+    margin-top: 2px;
+}

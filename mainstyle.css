@@ -610,7 +610,7 @@ nav span:hover {
  top: 130px;
  display: inline-block;
  color: #ffffff;
- background-color: #206d60;
+ background-color: #728cc580;
  padding: 1rem 5rem;
  border-radius: 7px;
  text-decoration: none;
@@ -762,7 +762,7 @@ transform: scale(1.05);
 }
 
 .more .more-button:hover {
-  background-color: #2600ff;
+  background-color: #a35a06;
   transform: scale(1.05);
 }
 
