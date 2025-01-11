@@ -7,7 +7,6 @@
   
   <title>กล่องจดหมาย</title>
   <style>
-   
     .mailbox-btn {
       position: fixed;
       bottom: 20px;
@@ -127,11 +126,11 @@
         reward: "https://via.placeholder.com/40"
       },
       {
-        id: 41,
+        id: 43,
         type: "กิจกรรม4",
         title: "เติมเงินรับไอเทมพิเศษ",
         details: "รายละเอียดกิจกรรมเติมเงินเป็นไปตามนี้เท่านั้น",
-        reward: "https://via.placeholder.com/40"
+        reward: ""
       }
     ];
 
@@ -144,12 +143,11 @@
             <button class="btn" onclick="toggleDetails(${item.id})">รายละเอียด</button>
           </div>
           ${item.reward ? `<img src="${item.reward}" alt="Reward" class="reward-image">` : ""}
-          ${item.reward ? `
-            <button class="btn" id="claim-btn-${item.id}" 
-              onclick="claimReward(${item.id})" 
-              ${localStorage.getItem(`claimed-${item.id}`) ? "disabled" : ""}>
-              ${localStorage.getItem(`claimed-${item.id}`) ? "รับรางวัลแล้ว" : "รับรางวัล"}
-            </button>` : ""}
+          <button class="btn" id="claim-btn-${item.id}" 
+            onclick="claimReward(${item.id})" 
+            ${localStorage.getItem(`claimed-${item.id}`) ? "disabled" : ""}>
+            ${localStorage.getItem(`claimed-${item.id}`) ? "รับรางวัลแล้ว" : "รับรางวัล"}
+          </button>
           <div class="details" id="details-${item.id}">
             <p>${item.details}</p>
           </div>
